@@ -702,31 +702,31 @@
     "status": "ok"
   },
   "brz-perrin-crank-pulley": {
-    "last_attempt": "2026-10-19T13:20:46Z",
+    "last_attempt": "2026-10-26T22:42:08Z",
     "query": "PERRIN Lightweight Crank Pulley 2017 Subaru BRZ install review",
     "result_count": 5,
     "status": "ok"
   },
   "brz-perrin-engine-mounts": {
-    "last_attempt": "2026-10-19T13:20:45Z",
+    "last_attempt": "2026-10-26T22:42:06Z",
     "query": "PERRIN Engine Mount Kit 2013-2020 Subaru BRZ install review",
     "result_count": 5,
     "status": "ok"
   },
   "brz-perrin-front-endlinks": {
-    "last_attempt": "2026-10-19T13:20:45Z",
+    "last_attempt": "2026-10-26T22:42:06Z",
     "query": "PERRIN Front Endlinks with Urethane Bushings 2017 Subaru BRZ install review",
-    "result_count": 5,
+    "result_count": 4,
     "status": "ok"
   },
   "brz-perrin-front-swaybar": {
-    "last_attempt": "2026-10-19T13:20:46Z",
+    "last_attempt": "2026-10-26T22:42:07Z",
     "query": "PERRIN Front Swaybar 2017 Subaru BRZ install review",
     "result_count": 3,
     "status": "ok"
   },
   "brz-perrin-inlet-hose-manual": {
-    "last_attempt": "2026-10-19T13:20:45Z",
+    "last_attempt": "2026-10-26T22:42:07Z",
     "query": "PERRIN Inlet Hose - Manual Transmission 2017-2020 Subaru BRZ manual install review",
     "result_count": 1,
     "status": "ok"
@@ -756,19 +756,19 @@
     "status": "ok"
   },
   "brz-perrin-rear-swaybar": {
-    "last_attempt": "2026-10-19T13:20:46Z",
+    "last_attempt": "2026-10-26T22:42:07Z",
     "query": "PERRIN Rear Swaybar 2017 Subaru BRZ install review",
     "result_count": 3,
     "status": "ok"
   },
   "brz-perrin-steering-lockdown": {
-    "last_attempt": "2026-10-19T13:20:44Z",
+    "last_attempt": "2026-10-26T22:42:06Z",
     "query": "PERRIN Steering Rack Lockdown 2017 Subaru BRZ install review",
     "result_count": 5,
     "status": "ok"
   },
   "brz-perrin-strut-brace": {
-    "last_attempt": "2026-10-19T13:20:45Z",
+    "last_attempt": "2026-10-26T22:42:06Z",
     "query": "PERRIN Front Strut Brace 2017 Subaru BRZ install review",
     "result_count": 5,
     "status": "ok"
@@ -810,9 +810,9 @@
     "status": "ok"
   },
   "miata-crossflow-rad": {
-    "last_attempt": "2026-10-19T13:20:42Z",
+    "last_attempt": "2026-10-26T22:42:02Z",
     "query": "Flyin' Miata Crossflow Radiator 1999-2005 NB Miata install review",
-    "result_count": 4,
+    "result_count": 5,
     "status": "ok"
   },
   "miata-fm-billet-front-sway-brackets": {
@@ -840,7 +840,7 @@
     "status": "ok"
   },
   "miata-fm-exhaust": {
-    "last_attempt": "2026-10-19T13:20:43Z",
+    "last_attempt": "2026-10-26T22:42:02Z",
     "query": "Flyin' Miata NB Exhaust 1999-2005 NB Miata install review",
     "result_count": 5,
     "status": "ok"
@@ -864,13 +864,13 @@
     "status": "ok"
   },
   "miata-fm-level1-clutch": {
-    "last_attempt": "2026-10-19T13:20:43Z",
+    "last_attempt": "2026-10-26T22:42:03Z",
     "query": "Flyin' Miata Level 1 Performance Clutch NA/NB Miata install review",
     "result_count": 5,
     "status": "ok"
   },
   "miata-fm-rear-sway": {
-    "last_attempt": "2026-10-19T13:20:41Z",
+    "last_attempt": "2026-10-26T22:42:00Z",
     "query": "Flyin' Miata Rear Sway Bar 1999-2005 NB Miata install review",
     "result_count": 5,
     "status": "ok"
@@ -882,13 +882,13 @@
     "status": "ok"
   },
   "miata-fm-sway-set": {
-    "last_attempt": "2026-10-19T13:20:41Z",
+    "last_attempt": "2026-10-26T22:42:00Z",
     "query": "Flyin' Miata Sway Bar Set - NB Chassis 1999-2005 NB Miata install review",
     "result_count": 5,
     "status": "ok"
   },
   "miata-frame-rails": {
-    "last_attempt": "2026-10-19T13:20:41Z",
+    "last_attempt": "2026-10-26T22:42:01Z",
     "query": "Flyin' Miata Frame Rails v2.0 1999-2005 NB Miata install review",
     "result_count": 5,
     "status": "ok"
@@ -924,25 +924,25 @@
     "status": "ok"
   },
   "miata-rubber-bushings": {
-    "last_attempt": "2026-10-19T13:20:42Z",
+    "last_attempt": "2026-10-26T22:42:01Z",
     "query": "Flyin' Miata Complete High Performance Rubber Bushing Set NA/NB Miata install review",
     "result_count": 5,
     "status": "ok"
   },
   "miata-shifter-rebuild": {
-    "last_attempt": "2026-10-19T13:20:43Z",
+    "last_attempt": "2026-10-26T22:42:02Z",
     "query": "Flyin' Miata Shifter Rebuild Kit 1999-2005 NB Miata install review",
     "result_count": 5,
     "status": "ok"
   },
   "miata-stage1-brakes": {
-    "last_attempt": "2026-10-19T13:20:42Z",
+    "last_attempt": "2026-10-26T22:42:01Z",
     "query": "Flyin' Miata 1994-02 Stage 1 Performance Brake Kit 1999-2002 NB Miata install review",
     "result_count": 0,
     "status": "ok"
   },
   "miata-stage1-turbo-9900": {
-    "last_attempt": "2026-10-19T13:20:44Z",
+    "last_attempt": "2026-10-26T22:42:03Z",
     "query": "Flyin' Miata Stage 1 Turbo System 1999-00 1999-2000 NB Miata install review",
     "result_count": 5,
     "status": "ok"
@@ -960,7 +960,7 @@
     "status": "ok"
   },
   "miata-water-pump": {
-    "last_attempt": "2026-10-19T13:20:42Z",
+    "last_attempt": "2026-10-26T22:42:02Z",
     "query": "Flyin' Miata 1.8L Water Pump 1999-2005 NB Miata 1.8 install review",
     "result_count": 5,
     "status": "ok"
@@ -972,19 +972,19 @@
     "status": "ok"
   },
   "mustang-airlift-s550-front-kit": {
-    "last_attempt": "2026-10-19T22:23:10Z",
+    "last_attempt": "2026-10-26T22:42:05Z",
     "query": "Air Lift Performance S550 Front Suspension Kit 2015-2023 Ford Mustang S550 install review",
     "result_count": 5,
     "status": "ok"
   },
   "mustang-steeda-brake-lines": {
-    "last_attempt": "2026-10-19T22:23:09Z",
+    "last_attempt": "2026-10-26T22:42:04Z",
     "query": "Steeda Stainless Braided Brake Lines - Front and Rear 2015-2023 Ford Mustang GT S550 install review",
     "result_count": 5,
     "status": "ok"
   },
   "mustang-steeda-handling-package": {
-    "last_attempt": "2026-10-19T22:23:10Z",
+    "last_attempt": "2026-10-26T22:42:05Z",
     "query": "Steeda S550 Handling Suspension Package 2015-2023 Ford Mustang S550 install review",
     "result_count": 5,
     "status": "ok"
@@ -996,19 +996,19 @@
     "status": "ok"
   },
   "mustang-steeda-pp-rear-rotors": {
-    "last_attempt": "2026-10-19T22:23:10Z",
+    "last_attempt": "2026-10-26T22:42:05Z",
     "query": "Steeda Performance Pack Rear Two-Piece Brake Rotors 2015-2023 Ford Mustang GT Performance Package install review",
     "result_count": 5,
     "status": "ok"
   },
   "mustang-steeda-progressive-springs": {
-    "last_attempt": "2026-10-19T22:23:09Z",
+    "last_attempt": "2026-10-26T22:42:04Z",
     "query": "Steeda Sport Lowering Springs - Progressive 2015-2023 Ford Mustang S550 install review",
     "result_count": 5,
     "status": "ok"
   },
   "mustang-whiteline-sway-kit": {
-    "last_attempt": "2026-10-19T22:23:09Z",
+    "last_attempt": "2026-10-26T22:42:04Z",
     "query": "Whiteline Front and Rear Sway Bar Vehicle Kit 2015-2023 Ford Mustang S550 install review",
     "result_count": 5,
     "status": "ok"
