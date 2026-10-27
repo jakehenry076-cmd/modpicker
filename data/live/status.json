@@ -6,7 +6,7 @@
     "automatic_publication": {
       "attempted": 24,
       "enabled": true,
-      "promoted": 1,
+      "promoted": 0,
       "promotion_limit": 24,
       "warnings": []
     },
@@ -66,20 +66,20 @@
       "enabled": true,
       "passenger_car_only": true,
       "pruned_invalid_nhtsa": 0,
-      "rejected_make_mismatch": 0,
+      "rejected_make_mismatch": 12,
       "requests": 12,
-      "rows_seen": 89,
+      "rows_seen": 70,
       "vehicle_count": 609,
       "warnings": []
     },
     "web_product": {
       "enabled": true,
-      "fresh_pages_skipped": 143,
-      "offer_count": 1,
-      "pages_checked": 1,
+      "fresh_pages_skipped": 144,
+      "offer_count": 0,
+      "pages_checked": 0,
       "refresh_hours": 24,
-      "robots_origins_checked": 2,
-      "source_count": 1,
+      "robots_origins_checked": 1,
+      "source_count": 0,
       "warnings": [
         "robots denied/unavailable: https://www.turnermotorsport.com/p-2765-coolant-expansion-tank-e53-x5-z3/",
         "robots denied/unavailable: https://www.turnermotorsport.com/p-339093-complete-cooling-system-overhaul-package-1999-2002-z3-23-25i-28-30/",
@@ -95,16 +95,16 @@
       ]
     },
     "youtube": {
-      "count": 86,
+      "count": 82,
       "enabled": true,
-      "fresh_parts_skipped": 61,
+      "fresh_parts_skipped": 171,
       "max_searches": 25,
       "quota_cooldown_active": false,
       "quota_cooldown_hours": 12,
       "quota_stopped": false,
       "refresh_days": 7,
       "search_calls": 25,
-      "search_state_entries": 195,
+      "search_state_entries": 196,
       "warnings": []
     }
   },
@@ -120,14 +120,14 @@
   "expanded_fitment_count": 2619,
   "fitment_rule_count": 102,
   "fitment_warnings": [],
-  "generated_at": "2026-10-27T05:09:23Z",
+  "generated_at": "2026-10-27T12:15:26Z",
   "matched_fitment_rule_count": 102,
   "mode": "deterministic_no_ai",
   "offer_count": 165,
   "ok": false,
   "platform_count": 7,
   "price_history_count": 3826,
-  "review_queue_count": 65,
-  "source_count": 1102,
+  "review_queue_count": 66,
+  "source_count": 1107,
   "vehicle_count": 609
 }
