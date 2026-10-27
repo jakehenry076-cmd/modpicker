@@ -3089,5 +3089,33 @@
       "vendor": "PERRIN"
     },
     "status": "active"
+  },
+  {
+    "auto_discovered": true,
+    "brand": "Flyin' Miata",
+    "category": "Cooling",
+    "description": "If you still have an upright / stock-format radiator, the upper radiator hose routing with a reroute can be pretty clumsy. The \"right\" answer is our crossflow radiator - seriously, it's WAY more efficient than any upright / stock-style radiator - but this adapter hose will give you clean routing with your existing radiator. Tight bends for fit, but open enough for good flow, this should fit nearly any install. Both ends of the hose are left a little long so you can trim to fit if need be. 1.25\" inside diameter, includes two constant-torque hose clamps and a coupler to attach to your existing reroute-specific upper radiator hose. Note that this is in addition to your existing hose, it doesn't replace it, and it doesn't include a hose clamp for the radiator side, as you should already have that clamp. This hose will work with the stock spring clamp.\nIntended for reroutes only, won't work with cars that will have stock radiator routing.",
+    "discovery_metadata": {
+      "candidate_id": "c27e84ace06ba563a484",
+      "collection_url": "https://flyinmiata.com/collections/nb-powertrain-cooling",
+      "fitment_scope_source": "not established"
+    },
+    "fitment_confidence": 0,
+    "fitment_source_url": "https://flyinmiata.com/products/reroute-upright-radiator-adapter-hose-kit",
+    "fitment_status": "unknown",
+    "id": "auto-d25386a39e777f908278",
+    "image_url": "https://flyinmiata.com/cdn/shop/files/09-60026_Upright_Reroute_Hose_Adapter_Kit_050123_1500x.jpg?v=1683059797",
+    "manufacturer_part_number": "09-60026",
+    "name": "Upright / stock radiator adapter hose kit for FM reroute",
+    "official_url": "https://flyinmiata.com/products/reroute-upright-radiator-adapter-hose-kit",
+    "price_hint": {
+      "currency": "USD",
+      "in_stock": false,
+      "observed_at": "2026-10-27T05:09:03Z",
+      "price": 34.99,
+      "url": "https://flyinmiata.com/products/reroute-upright-radiator-adapter-hose-kit",
+      "vendor": "Flyin' Miata"
+    },
+    "status": "active"
   }
 ]

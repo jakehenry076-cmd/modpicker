@@ -1,12 +1,12 @@
 {
   "application_count": 227,
-  "candidate_count": 203,
-  "catalog_part_count": 195,
+  "candidate_count": 204,
+  "catalog_part_count": 196,
   "collectors": {
     "automatic_publication": {
       "attempted": 24,
       "enabled": true,
-      "promoted": 0,
+      "promoted": 1,
       "promotion_limit": 24,
       "warnings": []
     },
@@ -46,9 +46,9 @@
       ]
     },
     "seed_catalog": {
-      "count": 195,
-      "offer_count": 164,
-      "source_count": 185,
+      "count": 196,
+      "offer_count": 165,
+      "source_count": 186,
       "warnings": []
     },
     "vehicles": {
@@ -68,18 +68,18 @@
       "pruned_invalid_nhtsa": 0,
       "rejected_make_mismatch": 0,
       "requests": 12,
-      "rows_seen": 49,
+      "rows_seen": 89,
       "vehicle_count": 609,
       "warnings": []
     },
     "web_product": {
       "enabled": true,
-      "fresh_pages_skipped": 0,
-      "offer_count": 118,
-      "pages_checked": 143,
+      "fresh_pages_skipped": 143,
+      "offer_count": 1,
+      "pages_checked": 1,
       "refresh_hours": 24,
-      "robots_origins_checked": 3,
-      "source_count": 143,
+      "robots_origins_checked": 2,
+      "source_count": 1,
       "warnings": [
         "robots denied/unavailable: https://www.turnermotorsport.com/p-2765-coolant-expansion-tank-e53-x5-z3/",
         "robots denied/unavailable: https://www.turnermotorsport.com/p-339093-complete-cooling-system-overhaul-package-1999-2002-z3-23-25i-28-30/",
@@ -95,9 +95,9 @@
       ]
     },
     "youtube": {
-      "count": 111,
+      "count": 86,
       "enabled": true,
-      "fresh_parts_skipped": 36,
+      "fresh_parts_skipped": 61,
       "max_searches": 25,
       "quota_cooldown_active": false,
       "quota_cooldown_hours": 12,
@@ -120,14 +120,14 @@
   "expanded_fitment_count": 2619,
   "fitment_rule_count": 102,
   "fitment_warnings": [],
-  "generated_at": "2026-10-26T22:43:11Z",
+  "generated_at": "2026-10-27T05:09:23Z",
   "matched_fitment_rule_count": 102,
   "mode": "deterministic_no_ai",
-  "offer_count": 164,
+  "offer_count": 165,
   "ok": false,
   "platform_count": 7,
-  "price_history_count": 3825,
+  "price_history_count": 3826,
   "review_queue_count": 65,
-  "source_count": 1095,
+  "source_count": 1102,
   "vehicle_count": 609
 }

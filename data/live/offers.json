@@ -1693,6 +1693,25 @@
   {
     "condition": "new",
     "currency": "USD",
+    "id": "5587d28e00b33975e56f",
+    "in_stock": false,
+    "metadata": {
+      "identity_matched": true,
+      "name": "Upright / stock radiator adapter hose kit for FM reroute",
+      "price_type": "structured_page",
+      "sku": null,
+      "source": "json-ld"
+    },
+    "part_id": "auto-d25386a39e777f908278",
+    "price": 34.99,
+    "retrieved_at": "2026-10-27T05:09:20Z",
+    "shipping": null,
+    "url": "https://flyinmiata.com/products/reroute-upright-radiator-adapter-hose-kit",
+    "vendor": "Flyin' Miata"
+  },
+  {
+    "condition": "new",
+    "currency": "USD",
     "id": "a140f1e4635028495c42",
     "in_stock": true,
     "metadata": {
