@@ -66,9 +66,9 @@
       "enabled": true,
       "passenger_car_only": true,
       "pruned_invalid_nhtsa": 0,
-      "rejected_make_mismatch": 12,
+      "rejected_make_mismatch": 0,
       "requests": 12,
-      "rows_seen": 70,
+      "rows_seen": 174,
       "vehicle_count": 609,
       "warnings": []
     },
@@ -95,9 +95,9 @@
       ]
     },
     "youtube": {
-      "count": 111,
+      "count": 76,
       "enabled": true,
-      "fresh_parts_skipped": 171,
+      "fresh_parts_skipped": 61,
       "max_searches": 25,
       "quota_cooldown_active": false,
       "quota_cooldown_hours": 12,
@@ -120,7 +120,7 @@
   "expanded_fitment_count": 2619,
   "fitment_rule_count": 102,
   "fitment_warnings": [],
-  "generated_at": "2026-11-03T01:00:17Z",
+  "generated_at": "2026-11-03T14:19:30Z",
   "matched_fitment_rule_count": 102,
   "mode": "deterministic_no_ai",
   "offer_count": 165,
@@ -128,6 +128,6 @@
   "platform_count": 7,
   "price_history_count": 4540,
   "review_queue_count": 66,
-  "source_count": 1159,
+  "source_count": 1177,
   "vehicle_count": 609
 }
