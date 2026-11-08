@@ -10915,7 +10915,7 @@
       "make_id": 473,
       "model_id": 10202,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.466746+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.204270+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -10936,7 +10936,7 @@
       "make_id": 473,
       "model_id": 10202,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.792286+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.357846+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -10957,7 +10957,7 @@
       "make_id": 473,
       "model_id": 2153,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.466740+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.204265+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -10978,7 +10978,7 @@
       "make_id": 473,
       "model_id": 2153,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.792281+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.357841+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -10999,7 +10999,7 @@
       "make_id": 473,
       "model_id": 2074,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.466726+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.204250+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11020,7 +11020,7 @@
       "make_id": 473,
       "model_id": 2074,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.792268+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.357831+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11041,7 +11041,7 @@
       "make_id": 473,
       "model_id": 2074,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:16.190289+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.517432+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2025/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11062,7 +11062,7 @@
       "make_id": 473,
       "model_id": 2074,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:16.523619+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.670847+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2026/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11083,7 +11083,7 @@
       "make_id": 473,
       "model_id": 2078,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.466734+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.204259+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11104,7 +11104,7 @@
       "make_id": 473,
       "model_id": 2078,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.792275+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.357836+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11209,7 +11209,7 @@
       "make_id": 473,
       "model_id": 2072,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.466702+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.204227+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11230,7 +11230,7 @@
       "make_id": 473,
       "model_id": 2072,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:15.792216+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.357812+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11251,7 +11251,7 @@
       "make_id": 473,
       "model_id": 2072,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:16.190270+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.517409+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2025/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -11272,7 +11272,7 @@
       "make_id": 473,
       "model_id": 2072,
       "requested_make": "Mazda",
-      "retrieved_at": "2026-11-07T13:07:16.523598+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.670827+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Mazda/modelyear/2026/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -13813,7 +13813,7 @@
       "make_id": 523,
       "model_id": 2238,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.498770+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.202905+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14146,7 +14146,7 @@
       "make_id": 523,
       "model_id": 2238,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.792815+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.364590+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14167,7 +14167,7 @@
       "make_id": 523,
       "model_id": 2238,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:18.123044+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.569520+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2025/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14188,7 +14188,7 @@
       "make_id": 523,
       "model_id": 2238,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:18.458476+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.771168+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2026/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14209,7 +14209,7 @@
       "make_id": 523,
       "model_id": 2234,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:16.842042+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.867760+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14230,7 +14230,7 @@
       "make_id": 523,
       "model_id": 2234,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.181473+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.018612+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14251,7 +14251,7 @@
       "make_id": 523,
       "model_id": 2235,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:16.842049+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.867765+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14272,7 +14272,7 @@
       "make_id": 523,
       "model_id": 2235,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.181480+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.018619+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14293,7 +14293,7 @@
       "make_id": 523,
       "model_id": 2235,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.498760+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.202893+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14314,7 +14314,7 @@
       "make_id": 523,
       "model_id": 2235,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.792805+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.364579+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14335,7 +14335,7 @@
       "make_id": 523,
       "model_id": 2235,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:18.123033+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.569507+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2025/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14356,7 +14356,7 @@
       "make_id": 523,
       "model_id": 2235,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:18.458452+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.771141+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2026/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14377,7 +14377,7 @@
       "make_id": 523,
       "model_id": 2232,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:16.842021+00:00",
+      "retrieved_at": "2026-11-08T22:08:25.867741+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14398,7 +14398,7 @@
       "make_id": 523,
       "model_id": 2232,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.181452+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.018593+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14419,7 +14419,7 @@
       "make_id": 523,
       "model_id": 2232,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.498741+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.202853+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14440,7 +14440,7 @@
       "make_id": 523,
       "model_id": 2232,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.792787+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.364560+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14461,7 +14461,7 @@
       "make_id": 523,
       "model_id": 2232,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:18.123015+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.569487+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2025/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14482,7 +14482,7 @@
       "make_id": 523,
       "model_id": 2237,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.498766+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.202900+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2017/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14503,7 +14503,7 @@
       "make_id": 523,
       "model_id": 2237,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:17.792811+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.364585+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2020/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14524,7 +14524,7 @@
       "make_id": 523,
       "model_id": 2237,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:18.123039+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.569514+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2025/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14545,7 +14545,7 @@
       "make_id": 523,
       "model_id": 2237,
       "requested_make": "Subaru",
-      "retrieved_at": "2026-11-07T13:07:18.458471+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.771162+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Subaru/modelyear/2026/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14920,7 +14920,7 @@
       "make_id": 448,
       "model_id": 2465,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:18.748331+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.937839+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -14941,7 +14941,7 @@
       "make_id": 448,
       "model_id": 2465,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:19.054101+00:00",
+      "retrieved_at": "2026-11-08T22:08:27.111072+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15025,7 +15025,7 @@
       "make_id": 448,
       "model_id": 2469,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:18.748336+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.937845+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15046,7 +15046,7 @@
       "make_id": 448,
       "model_id": 2469,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:19.054108+00:00",
+      "retrieved_at": "2026-11-08T22:08:27.111078+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15151,7 +15151,7 @@
       "make_id": 448,
       "model_id": 2803,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:18.748342+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.937849+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15172,7 +15172,7 @@
       "make_id": 448,
       "model_id": 2803,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:19.054114+00:00",
+      "retrieved_at": "2026-11-08T22:08:27.111083+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15193,7 +15193,7 @@
       "make_id": 448,
       "model_id": 3645,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:18.748355+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.937859+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15214,7 +15214,7 @@
       "make_id": 448,
       "model_id": 3645,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:19.054118+00:00",
+      "retrieved_at": "2026-11-08T22:08:27.111087+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15235,7 +15235,7 @@
       "make_id": 448,
       "model_id": 2208,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:18.748313+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.937821+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15256,7 +15256,7 @@
       "make_id": 448,
       "model_id": 2208,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:19.054080+00:00",
+      "retrieved_at": "2026-11-08T22:08:27.111053+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15466,7 +15466,7 @@
       "make_id": 448,
       "model_id": 3650,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:19.054129+00:00",
+      "retrieved_at": "2026-11-08T22:08:27.111097+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15655,7 +15655,7 @@
       "make_id": 448,
       "model_id": 3648,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:19.054124+00:00",
+      "retrieved_at": "2026-11-08T22:08:27.111091+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/2000/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15676,7 +15676,7 @@
       "make_id": 448,
       "model_id": 3649,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:18.748359+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.937863+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
@@ -15991,7 +15991,7 @@
       "make_id": 448,
       "model_id": 3644,
       "requested_make": "Toyota",
-      "retrieved_at": "2026-11-07T13:07:18.748348+00:00",
+      "retrieved_at": "2026-11-08T22:08:26.937853+00:00",
       "source": "NHTSA vPIC",
       "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/Toyota/modelyear/1999/vehicletype/Passenger%20Car?format=json",
       "vehicle_type": "Passenger Car"
