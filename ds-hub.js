@@ -7,12 +7,13 @@ function status(text){if(typeof toast==='function')toast(text)}
 function signature(){return JSON.stringify({vehicle:state.vehicleId,build:state.build,meta:state.buildMeta})}
 function goal(){return document.querySelector('#guidedGoal').value}
 // The compressor housing wraps around the wheel and exits through a flanged outlet.
-const turbine = '<path d="M12 3h9v5h-6a8 8 0 1 1-3-5Z" fill="currentColor" fill-opacity=".1"/><path d="M21 2v7M12 2v3"/><circle cx="10" cy="14" r="5.5"/>'+Array.from({length:8},(_,index)=>'<path transform="rotate('+index*45+' 10 14)" d="M10 13q3-2 1.2-4.1-2.3 1-2.3 3.7" stroke-width=".8"/>').join('')+'<circle cx="10" cy="14" r="1.2" fill="currentColor"/><path d="M5 21v2h9v-2"/>';
+const turbine = '<path d="M13 4h9v5h-6a8 8 0 1 1-3-5Z"/><circle cx="9" cy="13" r="4"/><circle cx="9" cy="13" r="1"/><path d="M22 3v7M6 21v2h8v-2"/>';
 const passenger = '<circle cx="12" cy="4" r="2.5"/><path d="M8 21v-7l-1 4H4l2-7q.6-2.5 4-3h4q3.4.5 4 3l2 7h-3l-1-4v7H8Zm1-2 7-10"/>';
 const goalArt = {
  power: turbine,
+ brakes: '<path d="M5 5h12l3 3v10l-3 3H5l-2-3V8Z"/><path d="M7 5v5h9V5M7 21v-6h9v6M3 9h3m11 8h3"/><circle cx="6" cy="13" r=".6" fill="currentColor"/><circle cx="17" cy="13" r=".6" fill="currentColor"/>',
  reliability: '<path d="m12 2 8 3v6q0 7-8 11-8-4-8-11V5z"/><path d="m8 12 3 3 5-6"/>',
- handling: '<g transform="translate(-1 4) scale(.7)"><path d="M3 13a9.2 9.2 0 1 1 18 0c-.4 2.8-2.1 5.2-4.5 7h-9C5.1 18.2 3.4 15.8 3 13Z" stroke-width="2.6"/><path d="M3 10.5 9 12l2 7h2l2-7 6-1.5M9 12q3-3 6 0"/><circle cx="12" cy="13" r="1.4"/><path d="M12 2v2.5" stroke-width="2.4"/></g><path d="M20 2v3m-3 0h6l-6 3 6 3-6 3 6 3h-6m3 0v5m-3 0h6" stroke-width="1.4"/>',
+ handling: '<g transform="translate(-1 4) scale(.7)"><path d="M3 13a9.2 9.2 0 1 1 18 0c-.4 2.8-2.1 5.2-4.5 7h-9C5.1 18.2 3.4 15.8 3 13Z" stroke-width="2.6"/><path d="M3 10.5 9 12l2 7h2l2-7 6-1.5M9 12q3-3 6 0"/><circle cx="12" cy="13" r="1.4"/><path d="M12 2v2.5" stroke-width="2.4"/></g><path d="M20 2v3m-3 0h6m-1 0c-7 1-7 3-1 4s6 3 0 4-6 3 0 4-1 3-4 3m0 0h6m-3 0v3" stroke-width="1.4"/>',
  offroad: '<path d="m1 20 8-13 4 6 3-9 7 16zm5-8 3 2 2-3"/>',
  lightweight: '<path d="M4 19C0 9 11 2 22 2c0 10-7 20-17 17M2 22 17 7m-7 7h5"/>',
  safety: passenger,
@@ -22,7 +23,7 @@ const goalArt = {
 const improvements=[
  ['Engine and Powertrain','power',{'Air Intakes & Filters':'intake|air filter','Exhaust Systems':'exhaust|muffler|header','ECU Tuning & Reprogramming':'ecu|tuning|reflash','Forced Induction':'turbo|supercharger|intercooler','Ignition & Spark':'ignition|spark plug','Fuel System':'fuel|injector','Cooling System':'cooling|radiator|water pump'}],
  ['Handling and Suspension','handling',{'Suspension & Coilovers':'suspension|coilover|damper','Sway Bars & Anti-Roll Bars':'sway bar|anti.roll','Bushings':'bushing','Wheels and Tires':'wheel|tire','Alignment & Corner Balancing':'alignment|camber|corner balanc'}],
- ['Brakes and Drivetrain','safety',{'Brake Upgrades':'brake|rotor|caliper','Clutch & Flywheel':'clutch|flywheel','Differential & Gearing':'differential|final drive|ring and pinion','Short Shifters / Shift Kits':'shifter|shift kit'}],
+ ['Brakes and Drivetrain','brakes',{'Brake Upgrades':'brake|rotor|caliper','Clutch & Flywheel':'clutch|flywheel','Differential & Gearing':'differential|final drive|ring and pinion','Short Shifters / Shift Kits':'shifter|shift kit'}],
  ['Weight Reduction and Aerodynamics','lightweight',{'Weight Reduction':'weight.reduction|lightweight','Aerodynamic Body Kits':'aero|splitter|diffuser|spoiler'}],
  ['Interior, Electronics, and Comfort','balanced',{'Infotainment & Audio':'audio|speaker|infotainment','Sound Deadening':'sound deadening|sound damping','Seating & Controls':'seat|steering wheel|pedal','Lighting':'lighting|headlight|taillight'}],
  ['Safety','reliability',{'Roll Cages & Roll Bars':'roll[ -]?(cage|bar)','Fire Extinguishers & Suppression Systems':'fire (extinguisher|suppression)|fire bottle','Drag Racing Parachutes':'parachute','Racing Harnesses':'racing harness|safety harness|point harness','Window Nets & Arm Restraints':'window net|arm restraint','Battery Cutoff Switches':'battery (cutoff|cut.off|disconnect)|master kill switch'}]
