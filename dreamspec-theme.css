@@ -156,3 +156,4 @@ html[data-ds-color="light"] body.ui-refresh .mode-button.active{color:#fff}
 .ds-vehicle-nickname{display:grid;gap:7px;margin-top:18px;max-width:420px}
 .ds-vehicle-nickname small{font-weight:400;color:var(--muted);line-height:1.5}
 @media(max-width:760px){.ds-add-vehicle{grid-template-columns:1fr}.ds-vehicle-grid{gap:12px}.ds-vehicle-nickname{max-width:100%}}
+.ds-plus{display:grid;place-content:center;justify-items:center;gap:12px;min-height:190px;background:var(--panel2);color:var(--text);border:2px dashed var(--line);border-radius:12px;cursor:pointer;font:inherit}.ds-plus b,.ds-kind-icon{font-size:3rem}.ds-owned-controls [aria-pressed=true].button{outline:2px solid var(--accent)}#engineDetails label{display:grid;gap:6px;margin:18px 0}

@@ -22,7 +22,7 @@ const server=spawn('python',['-m','http.server','8124'],{cwd:path.join(__dirname
 
   await page.evaluate(()=>{state.browseMode='vehicle';switchVehicle('z3-2000-28')});
   await fixture.signIn(page);
-  await page.evaluate(()=>route('garage',false));
+  await page.evaluate(()=>route('garage',false));await page.locator('[data-owned-id]').first().click();
   await page.waitForSelector('#garageView.active-view');
   assert.equal(await page.locator('#garageProfileCompleteness').textContent(),'25% context complete');
   await page.locator('#garageOdometer').fill('100000');
@@ -50,7 +50,7 @@ const server=spawn('python',['-m','http.server','8124'],{cwd:path.join(__dirname
 
   await page.evaluate(()=>DSOwned.flush());
   await page.reload({waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>window.DSOwned?.active&&window.ModPickerGarage);await page.evaluate(()=>route('garage',false));
+  await page.waitForFunction(()=>window.DSOwned?.active&&window.ModPickerGarage);await page.evaluate(()=>route('garage',false));await page.locator('[data-owned-id]').first().click();
   assert.equal(await page.locator('#garageOdometer').inputValue(),'100000','Garage profile should persist across reloads');
   await page.setViewportSize({width:390,height:844});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Garage should not overflow on mobile');

@@ -86,17 +86,30 @@ function renderHistory(){
  const root=document.querySelector('#diagnosisHistory');if(!root)return;
  root.innerHTML=events.length?events.map(e=>'<article class="ds-event"><div class="ds-event-top"><strong>'+esc(e.title)+'</strong><span class="tag">'+(e.status==='resolved'?'Resolved':'Diagnostic · unconfirmed')+'</span></div><p>'+esc(e.payload?.symptoms||'')+'</p><small>'+esc(new Date(e.created_at).toLocaleString())+'</small><details><summary>Diagnostic notes and sources</summary><pre class="ds-event-payload">'+esc(JSON.stringify(e.payload?.result||e.payload,null,2))+'</pre></details>'+(e.status!=='resolved'?'<label>Repair / verification notes<input data-event-note="'+esc(e.id)+'" maxlength="2000" placeholder="What did you verify or repair?"></label><button class="button secondary small" data-resolve-event="'+esc(e.id)+'">Record resolution</button>':'<p>'+esc(e.resolution||'')+'</p>')+'</article>').join(''):'<p class="ds-muted">Diagnoser sessions will appear here automatically.</p>';
 }
+let detailOpen=false,engineRoom=false;
+function cardIcon(row,fallback){
+ if(row.profile.engineBuild)return '<svg viewBox="0 0 100 70" aria-hidden="true"><path fill="currentColor" d="M8 25h10l9-11h30l10 9h14v9h10v21H74l-8 9H29L17 50H8zM32 4h24v6H32z"/></svg>';
+ const v=window.MODPICKER_DATA.vehicles.find(v=>v.id===row.catalog_vehicle_id)||{};
+ const body=[v.body_style,v.body_type,v.tags,row.model,row.variant].join(' ');
+ const symbol=/minivan|van|transit|sprinter|odyssey|sienna/i.test(body)?'🚐':/truck|pickup|f-?150|silverado|sierra|tacoma|tundra|ranger|ram 1500/i.test(body)?'🛻':/suv|crossover|wrangler|4runner/i.test(body)?'🚙':'';
+ return symbol?'<span class="ds-kind-icon" aria-hidden="true">'+symbol+'</span>':fallback;
+}
 function renderVehicleCards(){
  const root=document.querySelector('#ownedVehicleCards');if(!root)return;
  const icon='<svg viewBox="0 0 160 80" fill="none" aria-hidden="true"><path d="M18 51l7-18 25-4 17-16h35l23 23 17 5v19H18z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M51 32l18-15h30l16 19H48M80 18v17M24 45h13m91 2h10" stroke="currentColor" stroke-width="3"/><circle cx="45" cy="59" r="11" fill="var(--panel)" stroke="currentColor" stroke-width="4"/><circle cx="119" cy="59" r="11" fill="var(--panel)" stroke="currentColor" stroke-width="4"/></svg>';
- root.innerHTML=rows.length?rows.map(r=>'<button type="button" class="ds-vehicle-card" data-owned-id="'+esc(r.id)+'" aria-pressed="'+String(r.id===activeId)+'"><span class="ds-vehicle-art">'+icon+'</span><span class="ds-vehicle-card-title">'+esc((r.profile.nickname??r.nickname??'').trim()||'My vehicle')+'</span><span class="ds-vehicle-model">'+esc(r.year+' '+r.make+' '+r.model)+'</span><span class="ds-vehicle-engine">'+esc(r.engine||'Engine unspecified')+'</span><span class="ds-vehicle-state">'+(r.id===activeId?'Selected vehicle':'Open vehicle')+'</span></button>').join(''):'<div class="ds-empty">Your Garage is ready for its first car. Choose a vehicle above to get started.</div>';
+ root.innerHTML=rows.filter(r=>!!r.profile.engineBuild===engineRoom).map(r=>'<button type="button" class="ds-vehicle-card" data-owned-id="'+esc(r.id)+'" aria-pressed="'+String(r.id===activeId)+'"><span class="ds-vehicle-art">'+cardIcon(r,icon)+'</span><span class="ds-vehicle-card-title">'+esc((r.profile.nickname??r.nickname??'').trim()||(engineRoom?'Engine build':'My vehicle'))+'</span><span class="ds-vehicle-model">'+esc(r.year+' '+r.make+' '+r.model)+'</span><span class="ds-vehicle-engine">'+esc(r.profile.designation||r.engine||'Engine unspecified')+'</span><span class="ds-vehicle-state">'+(r.id===activeId?'Selected vehicle':'Open vehicle')+'</span></button>').join('')+'<button type="button" class="ds-plus" data-add-item><b>＋</b>Add '+(engineRoom?'engine build':'vehicle')+'</button>';
 }
 function render(){
  renderVehicleCards();
  const selector=document.querySelector('#ownedVehicleSelect'),editor=document.querySelector('#garageEditor');
- if(selector){selector.innerHTML=rows.length?rows.map(r=>'<option value="'+esc(r.id)+'">'+esc((r.profile.nickname||r.nickname||'My vehicle')+' · '+r.year+' '+r.make+' '+r.model+' · '+(r.engine||'engine unspecified'))+'</option>').join(''):'<option value="">No vehicles saved yet</option>';selector.value=activeId||''}
+ if(selector){selector.innerHTML=rows.length?rows.map(r=>'<option value="'+esc(r.id)+'">'+esc((r.profile.nickname||r.nickname||(engineRoom?'Engine build':'My vehicle'))+' · '+r.year+' '+r.make+' '+r.model+' · '+(r.engine||'engine unspecified'))+'</option>').join(''):'<option value="">No vehicles saved yet</option>';selector.value=activeId||''}
  const editable=!!owner&&!!active()&&active().catalog_vehicle_id===state.vehicleId;
- if(editor)editor.hidden=!editable;
+ if(editor)editor.hidden=!editable||engineRoom||!detailOpen||!!active()?.profile.engineBuild;
+ const details=document.querySelector('#engineDetails');
+ if(details){
+  details.hidden=!editable||!engineRoom||!detailOpen||!active()?.profile.engineBuild;
+  for(const [id,value] of [['engineDesignation',active()?.profile.designation??active()?.engine],['engineBuildName',active()?.profile.nickname],['engineSpecs',active()?.profile.specifications]])document.getElementById(id).value=details.hidden?'':value||'';
+ }
  const hint=document.querySelector('#garageSelectionHint');if(hint)hint.textContent=!owner?'Log in to open your garage.':!rows.length?'Choose your vehicle above, then add it to your garage.':editable?'Each saved vehicle has its own profile and build sheet.':'Select a saved vehicle to edit its profile, or add the vehicle selected above.';
  const runVehicle=document.querySelector('#diagnoseVehicle');if(runVehicle){const selected=runVehicle.value;runVehicle.innerHTML=rows.map(r=>'<option value="'+esc(r.id)+'">'+esc((r.profile.nickname||r.nickname||'')+' · '+r.year+' '+r.make+' '+r.model+' '+(r.engine||''))+'</option>').join('');runVehicle.value=rows.some(r=>r.id===selected)?selected:(activeId||rows[0]?.id||'')}
  renderHistory();
@@ -135,9 +148,21 @@ async function load(){
  catch(e){if(epoch===expected){notify(e.message);render()}}
 }
 function bind(){
- document.querySelector('#ownedVehicleCards')?.addEventListener('click',event=>{const card=event.target.closest('[data-owned-id]');if(card)select(card.dataset.ownedId).catch(e=>notify(e.message))});
+ for(const [id,field] of [['engineDesignation','designation'],['engineBuildName','nickname'],['engineSpecs','specifications']])document.getElementById(id).oninput=e=>{
+  if(!capturesCurrent()||!active().profile.engineBuild)return;
+  active().profile[field]=e.target.value;queue();
+ };
+ for(const id of ['engineTab','vehicleTab'])document.querySelector('#'+id).onclick=()=>{
+  engineRoom=id==='engineTab';detailOpen=false;
+  for(const tab of ['engineTab','vehicleTab'])document.querySelector('#'+tab).setAttribute('aria-pressed',String(id===tab));
+  document.querySelector('#addPanel').hidden=true;
+  document.querySelector('#addTitle').textContent=engineRoom?'Add engine build':'Add vehicle';
+  document.querySelector('#addOwnedVehicle').textContent=engineRoom?'Save engine build':'Save vehicle';
+  render();
+ };
+ document.querySelector('#ownedVehicleCards')?.addEventListener('click',event=>{const card=event.target.closest('[data-owned-id]');if(event.target.closest('[data-add-item]')){document.querySelector('#addPanel').hidden=false;document.querySelector('#newVehicleNickname').focus();return}if(card)detailOpen=true;if(card)select(card.dataset.ownedId).catch(e=>notify(e.message))});
  document.querySelector('#ownedVehicleSelect')?.addEventListener('change',e=>select(e.target.value).catch(e=>notify(e.message)));
- document.querySelector('#addOwnedVehicle')?.addEventListener('click',()=>create({nickname:document.querySelector('#newVehicleNickname').value,profile:empty(),build:{}}).catch(e=>notify(e.message)));
+ document.querySelector('#addOwnedVehicle')?.addEventListener('click',()=>create({nickname:document.querySelector('#newVehicleNickname').value,profile:{...empty(),engineBuild:engineRoom},build:{}}).then(()=>{document.querySelector('#addPanel').hidden=true;document.querySelector('#newVehicleNickname').value='';detailOpen=true;render()}).catch(e=>notify(e.message)));
  document.querySelector('#importLegacyGarage')?.addEventListener('click',()=>importLegacy().catch(e=>notify(e.message)));
  document.querySelector('#reloadOwnedGarage')?.addEventListener('click',()=>{if(dirty){notify('Save or export pending changes before reloading.');return}load()});
  document.querySelector('#diagnosisHistory')?.addEventListener('click',async event=>{

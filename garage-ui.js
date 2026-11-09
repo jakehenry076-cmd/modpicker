@@ -8,18 +8,18 @@ const main=document.querySelector('main');
 if(!main)return;
 const section=document.createElement('section');section.id='garageView';section.className='view shell garage-view';section.innerHTML=`
   <div class="page-head garage-page-head">
-    <div><span class="eyebrow">Virtual garage</span><h1>Your car, not just the catalog.</h1><p>Record the actual condition, modifications, preferences, maintenance and history that should shape future recommendations.</p></div>
+    <div><span class="eyebrow">Virtual garage</span><h1>My Garage</h1><p>Record the actual condition, modifications, preferences, maintenance and history that should shape future recommendations.</p></div>
     <div class="garage-page-actions"><button id="copyMaintenanceReport" class="button secondary" type="button">Copy maintenance report</button><button id="exportGarageData" class="button secondary" type="button">Export garage JSON</button></div>
   </div>
   <section class="ds-card ds-owned-controls">
-    <h2>Your vehicles</h2>
+    <div class="ds-actions"><button id="vehicleTab" class="button secondary" aria-pressed="true">Vehicles</button><button id="engineTab" class="button secondary" aria-pressed="false">Engine Room</button></div>
     <div id="ownedVehicleCards" class="ds-vehicle-grid" aria-label="Saved vehicles"></div>
     <label hidden>My saved vehicles<select id="ownedVehicleSelect"></select></label>
-    <div class="ds-add-vehicle"><div><strong>Add another vehicle</strong><p class="ds-muted">Choose a car using the selectors above, then give it a nickname.</p></div><label>Vehicle nickname<input id="newVehicleNickname" maxlength="100" placeholder="Weekend project"></label><button id="addOwnedVehicle" class="button primary" type="button">Add selected car to Garage</button></div>
+    <div id="addPanel" class="ds-add-vehicle" hidden><div><strong id="addTitle">Add vehicle</strong><p class="ds-muted">Choose a vehicle using the selectors above, then give it a nickname.</p></div><label>Nickname<input id="newVehicleNickname" maxlength="100" placeholder="Weekend project"></label><button id="addOwnedVehicle" class="button primary" type="button">Add selected vehicle to Garage</button></div>
     <div class="ds-actions"><button id="importLegacyGarage" class="button secondary small" type="button">Import my previous browser garage</button><button id="reloadOwnedGarage" class="button secondary small" type="button">Reload saved vehicles</button></div>
-    <p id="garageSelectionHint"></p><p id="garageSyncStatus" role="status"></p>
+    <p id="garageSyncStatus" role="status"></p>
   </section>
-  <div id="garageEditor" hidden>
+  <section id="engineDetails" class="ds-card" hidden><h2>Engine build</h2><label>Engine designation<input id="engineDesignation" maxlength="100" placeholder="e.g. M52TU B28"></label><label>Build nickname<input id="engineBuildName" maxlength="100"></label><label>Build specifications<textarea id="engineSpecs" rows="5" placeholder="Components, modifications and measurements"></textarea></label></section><div id="garageEditor" hidden>
   <div class="garage-hero-card">
     <div class="garage-hero-main"><div class="garage-hero-copy"><span class="eyebrow">Current vehicle</span><h2 id="garageVehicleTitle">Selected vehicle</h2><p id="garageVehicleMeta"></p><label class="ds-vehicle-nickname"><span>Vehicle nickname</span><input id="garageNickname" data-profile-field="nickname" maxlength="100" placeholder="e.g. Weekend Z3"><small>Names this vehicle in your Garage. Changes save automatically.</small></label></div></div>
     <div class="garage-profile-meter"><span class="eyebrow">Recommendation context</span><strong id="garageProfileCompleteness">0% context complete</strong><p>More context lets recommendations avoid parts that conflict with your real car, preferences or maintenance needs.</p></div>
@@ -27,7 +27,7 @@ const section=document.createElement('section');section.id='garageView';section.
   <div class="garage-grid">
     <div class="garage-main-column">
       <section class="garage-card">
-        <div class="garage-card-head"><div><span class="eyebrow">Vehicle profile</span><h2>What is this car actually like?</h2><p>This information stays separate for each selected vehicle.</p></div></div>
+        <div class="garage-card-head"><div><span class="eyebrow">Vehicle profile</span><h2>Vehicle details</h2><p>This information stays separate for each selected vehicle.</p></div></div>
         <div class="garage-form-grid">
           <label><span>Current odometer (miles)</span><input id="garageOdometer" data-profile-field="odometer" type="number" min="0" placeholder="98500"></label>
           <label><span>Condition</span><select id="garageCondition" data-profile-field="condition"><option>Project</option><option>Driver</option><option>Good</option><option>Excellent</option><option>Track / competition</option></select></label>
@@ -69,7 +69,7 @@ const section=document.createElement('section');section.id='garageView';section.
     </div>
     <aside class="garage-side-column">
       <section class="garage-card">
-        <div class="garage-card-head"><div><span class="eyebrow">Vehicle photos</span><h3>Actual car</h3></div></div>
+        <div class="garage-card-head"><div><span class="eyebrow">Vehicle photos</span><h3>Vehicle photos</h3></div></div>
         <div id="garagePhotos" class="garage-photos"></div>
         <label class="garage-upload"><input id="garagePhotoInput" type="file" accept="image/*" multiple></label>
         <p class="garage-note">Images are compressed and limited to four per saved vehicle. Photos are private and saved with your account.</p>

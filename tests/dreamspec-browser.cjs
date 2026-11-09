@@ -81,10 +81,12 @@ const server=spawn('python',['-m','http.server','8126'],{cwd:require('node:path'
 
  await fixture.signIn(page);
  await page.evaluate(()=>route('garage',false));
+ await page.locator('[data-owned-id]').first().click();
  await page.locator('#garageNickname').fill('My first Z3');
  await page.locator('#garageNickname').dispatchEvent('input');
  await page.evaluate(()=>DSOwned.flush());
  assert.equal(mock.rows.find(r=>r.id===mock.first).profile.nickname,'My first Z3');
+ await page.locator('[data-add-item]').click();
  await page.locator('#newVehicleNickname').fill('My second Z3');
  await page.locator('#addOwnedVehicle').click();
  await page.waitForFunction(()=>window.DSOwned?.vehicles.length===2&&window.DSOwned.active?.nickname==='My second Z3');
