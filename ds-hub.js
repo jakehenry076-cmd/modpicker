@@ -6,12 +6,14 @@ function message(id,text){const node=document.querySelector('#'+id);if(node)node
 function status(text){if(typeof toast==='function')toast(text)}
 function signature(){return JSON.stringify({vehicle:state.vehicleId,build:state.build,meta:state.buildMeta})}
 function goal(){return document.querySelector('#guidedGoal').value}
-const turbine = '<path d="M13 4h8v4h-6a8 8 0 1 1-5-2V3h3z"/><circle cx="10" cy="14" r="5.5"/><circle cx="10" cy="14" r="1.1"/>'+[0,60,120,180,240,300].map(angle=>'<path transform="rotate('+angle+' 10 14)" d="M10 12.8q2-1 1-3"/>').join('');
-const passenger = '<circle cx="12" cy="4.5" r="2.7"/><path d="M6 21v-6q0-6 5-6h2q5 0 5 6v6zM5 20h14M7 18 17 8"/><path d="m9 17 2 2 2-2-2-2z" fill="currentColor"/>';
+// The compressor housing wraps around the wheel and exits through a flanged outlet.
+const turbine = '<path d="M10 3h11v5h-7a8 8 0 1 1-4-5Z" fill="currentColor" fill-opacity=".12"/><path d="M21 2v7"/><circle cx="10" cy="13" r="6"/>'+
+ Array.from({length:7},(_,i)=>'<path transform="rotate('+i*360/7+' 10 13)" d="M10 12q2-2 .4-4-1.8 1-2 3.8Z" stroke-width=".45" fill="currentColor"/>').join('')+'<circle cx="10" cy="13" r="1.3" fill="currentColor"/>';
+const passenger = '<circle cx="12" cy="4" r="2.5"/><path d="M8 21v-7l-1 4H4l2-7q.6-2.5 4-3h4q3.4.5 4 3l2 7h-3l-1-4v7H8Zm1-2 7-10"/>';
 const goalArt = {
  power: turbine,
  reliability: '<path d="m12 2 8 3v6q0 7-8 11-8-4-8-11V5z"/><path d="m8 12 3 3 5-6"/>',
- handling: '<circle cx="12" cy="12" r="10"/><path d="M4 10q8-5 16 0l-6 4-1 6h-2l-1-6z"/><circle cx="12" cy="11" r="2"/>',
+ handling: '<path d="M3 13a9.2 9.2 0 1 1 18 0c-.4 2.8-2.1 5.2-4.5 7h-9C5.1 18.2 3.4 15.8 3 13Z" stroke-width="2.6"/><path d="M3 10.5 9 12l2 7h2l2-7 6-1.5M9 12q3-3 6 0"/><circle cx="12" cy="13" r="1.4"/><path d="M12 2v2.5" stroke-width="2.4"/>',
  offroad: '<path d="m1 20 8-13 4 6 3-9 7 16zm5-8 3 2 2-3"/>',
  lightweight: '<path d="M4 19C0 9 11 2 22 2c0 10-7 20-17 17M2 22 17 7m-7 7h5"/>',
  safety: passenger,
@@ -23,7 +25,8 @@ const improvements=[
  ['Handling and Suspension','handling',{'Suspension & Coilovers':'suspension|coilover|damper','Sway Bars & Anti-Roll Bars':'sway bar|anti.roll','Bushings':'bushing','Wheels and Tires':'wheel|tire','Alignment & Corner Balancing':'alignment|camber|corner balanc'}],
  ['Brakes and Drivetrain','safety',{'Brake Upgrades':'brake|rotor|caliper','Clutch & Flywheel':'clutch|flywheel','Differential & Gearing':'differential|final drive|ring and pinion','Short Shifters / Shift Kits':'shifter|shift kit'}],
  ['Weight Reduction and Aerodynamics','lightweight',{'Weight Reduction':'weight.reduction|lightweight','Aerodynamic Body Kits':'aero|splitter|diffuser|spoiler'}],
- ['Interior, Electronics, and Comfort','balanced',{'Infotainment & Audio':'audio|speaker|infotainment','Sound Deadening':'sound deadening|sound damping','Seating & Controls':'seat|steering wheel|pedal','Lighting':'lighting|headlight|taillight'}]
+ ['Interior, Electronics, and Comfort','balanced',{'Infotainment & Audio':'audio|speaker|infotainment','Sound Deadening':'sound deadening|sound damping','Seating & Controls':'seat|steering wheel|pedal','Lighting':'lighting|headlight|taillight'}],
+ ['Safety','reliability',{'Roll Cages & Roll Bars':'roll[ -]?(cage|bar)','Fire Extinguishers & Suppression Systems':'fire (extinguisher|suppression)|fire bottle','Drag Racing Parachutes':'parachute','Racing Harnesses':'racing harness|safety harness|point harness','Window Nets & Arm Restraints':'window net|arm restraint','Battery Cutoff Switches':'battery (cutoff|cut.off|disconnect)|master kill switch'}]
 ];
 const types=[
  ['Motorsport & Performance Builds','track',{'Track / Road Course':'track','Drag Racing (Pro Street / Drag)':'power','Drift':'handling','Rally / Rallycross':'offroad','Formula / Scratch-Built':'track'}],

@@ -42,6 +42,7 @@ const server=spawn('python',['-m','http.server','8126'],{cwd:require('node:path'
  await page.locator('#guidedPlanForm button[type="submit"]').click();
  assert.equal(await page.evaluate(()=>JSON.stringify(state.build)),before);
  assert.ok(await page.locator('#guidedPlan').innerText());
+ await page.locator('.planner-parent > summary').filter({hasText:'Build Type'}).click();
  await page.locator('#typeCards summary').filter({hasText:'HERITAGE'}).click();
  await page.getByRole('button',{name:'OFF-ROAD',exact:true}).click();
  await page.locator('#guidedPlanForm button[type="submit"]').click();

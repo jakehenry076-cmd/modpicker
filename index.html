@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="enhancements.css" /><link rel="stylesheet" href="polish.css" />
   <link rel="stylesheet" href="home.css" />
-  <link rel="stylesheet" href="dreamspec-theme.css?v=goal-tree-1" />
+  <link rel="stylesheet" href="dreamspec-theme.css?v=goal-tree-2" />
 </head>
 <body data-view="home" class="ui-refresh">
   <a class="skip-link" href="#mainContent">Skip to content</a>
@@ -107,7 +107,10 @@
 
     <section id="goalsView" class="view shell ds-workspace" aria-labelledby="goalsTitle">
       <div class="page-head"><div><span class="eyebrow">01 / Guided upgrades</span><h1 id="goalsTitle">What’s your next goal?</h1><p>Select a vehicle above, then choose a direction for your build.</p></div></div>
-      <div id="goalCards"><section><h2>Improve</h2><div id="improveCards" class="ds-goal-grid"></div></section><section><h2>Build Type</h2><label class="blend-setting"><input type="checkbox" id="blendTypes"> Blend two build types</label><div id="typeCards" class="ds-goal-grid"></div></section></div>
+      <div id="goalCards">
+        <details class="planner-parent"><summary>Improve</summary><div id="improveCards" class="ds-goal-grid"></div></details>
+        <details class="planner-parent"><summary>Build Type</summary><label class="blend-setting"><input type="checkbox" id="blendTypes"> Blend two build types</label><div id="typeCards" class="ds-goal-grid"></div></details>
+      </div>
       <p id="choiceSummary" aria-live="polite"></p><form id="guidedPlanForm" class="guided-budget-form">
         <input id="guidedGoal" type="hidden" value="power">
         <label class="ds-goal-tile budget-tile"><svg class="goal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><circle cx="12" cy="12" r="3"/><path d="M5 12h2m10 0h2"/></svg><strong>BUDGET (USD)</strong><input id="guidedBudget" type="number" min="0" max="10000000" step="0.01" placeholder="Optional"></label>
@@ -179,7 +182,7 @@
   <script src="data-extra.js"></script>
   <script src="pipeline-data.js"></script>
   <script src="pipeline-bridge.js"></script>
-  <script src="ds-core.js?v=goal-tree-1"></script>
+  <script src="ds-core.js?v=goal-tree-2"></script>
   <script src="ds-auth.js"></script>
   <script src="ds-owned.js"></script>
   <script src="app-v2.js"></script>
@@ -187,6 +190,6 @@
   <script src="curated-discussions.js"></script>
   <script src="trust-ui.js"></script>
   <script src="supabase-bridge.js"></script>
-  <script src="ds-hub.js?v=goal-tree-1"></script>
+  <script src="ds-hub.js?v=goal-tree-2"></script>
 </body>
 </html>
