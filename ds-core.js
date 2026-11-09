@@ -26,13 +26,13 @@ function matchGoal(p,goal){
  const tags=[...(p.goals||[]),...(p.goalTags||[]),...(p.tags||[])].map(x=>String(x).toLowerCase());
  return tags.includes(goal)||goal==='offroad'&&tags.includes('off-road')||goal==='lightweight'&&tags.includes('weight-reduction');
 }
-function draftPlan({parts,vehicleId,goal='balanced',budget=null,laborRate=0,existing=[],existingMeta={},now=Date.now()}){
+function draftPlan({parts,vehicleId,goal='balanced',goals=[],candidateFilter=null,budget=null,laborRate=0,existing=[],existingMeta={},now=Date.now()}){
  const def=GOALS[goal]||GOALS.balanced;goal=GOALS[goal]?goal:'balanced';
  const byId=new Map(parts.map(p=>[p.id,p])),used=new Set(existing),usedCategories=new Set(existing.map(id=>byId.get(id)?.category));
  const cap=finite(budget)&&Number(budget)>=0?Number(budget):null,rate=finite(laborRate)&&Number(laborRate)>0?Number(laborRate):0;
  let spent=0,unknownExisting=0;
  for(const id of existing){const p=byId.get(id);if(!p)continue;const m=existingMeta[id]||{},unit=finite(m.paid)?Number(m.paid):price(p,now),quantity=Math.max(1,Number(m.quantity)||1);if(unit==null)unknownExisting++;else spent+=unit*quantity;if(rate&&hours(p)!=null)spent+=hours(p)*quantity*rate}
- const picks=[],messages=[],candidates=parts.filter(p=>verified(p,vehicleId)&&matchGoal(p,goal)).sort((a,b)=>{
+ const picks=[],messages=[],candidates=parts.filter(p=>verified(p,vehicleId)&&(candidateFilter?candidateFilter(p):(goals.length?goals:[goal]).some(target=>matchGoal(p,target)))).sort((a,b)=>{
  const ra=finite(a.rating?.overall)?Number(a.rating.overall):-1,rb=finite(b.rating?.overall)?Number(b.rating.overall):-1;
  return rb-ra||(price(a,now)??Infinity)-(price(b,now)??Infinity)||String(a.id).localeCompare(String(b.id));
  });

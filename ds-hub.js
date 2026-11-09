@@ -18,13 +18,40 @@ const goalArt = {
  balanced: '<path d="M12 6v15m-4 1h8M2 8l10-3 10 3M1 17q4 5 8 0zm14 0q4 5 8 0z"/><g transform="translate(1 9) scale(.36)">'+turbine+'</g><g transform="translate(15 9) scale(.4)">'+passenger+'</g>',
  track: '<path d="M5 20c-4 0-4-5-2-8l4-7q1-2 4-2h6q5 0 5 4t-5 4h-3l-4 7q-1 2-5 2z"/><path d="m6 16 5-9h6" stroke-dasharray="2 2"/>'
 };
+const improvements=[
+ ['Engine and Powertrain','power',{'Air Intakes & Filters':'intake|air filter','Exhaust Systems':'exhaust|muffler|header','ECU Tuning & Reprogramming':'ecu|tuning|reflash','Forced Induction':'turbo|supercharger|intercooler','Ignition & Spark':'ignition|spark plug','Fuel System':'fuel|injector','Cooling System':'cooling|radiator|water pump'}],
+ ['Handling and Suspension','handling',{'Suspension & Coilovers':'suspension|coilover|damper','Sway Bars & Anti-Roll Bars':'sway bar|anti.roll','Bushings':'bushing','Wheels and Tires':'wheel|tire','Alignment & Corner Balancing':'alignment|camber|corner balanc'}],
+ ['Brakes and Drivetrain','safety',{'Brake Upgrades':'brake|rotor|caliper','Clutch & Flywheel':'clutch|flywheel','Differential & Gearing':'differential|final drive|ring and pinion','Short Shifters / Shift Kits':'shifter|shift kit'}],
+ ['Weight Reduction and Aerodynamics','lightweight',{'Weight Reduction':'weight.reduction|lightweight','Aerodynamic Body Kits':'aero|splitter|diffuser|spoiler'}],
+ ['Interior, Electronics, and Comfort','balanced',{'Infotainment & Audio':'audio|speaker|infotainment','Sound Deadening':'sound deadening|sound damping','Seating & Controls':'seat|steering wheel|pedal','Lighting':'lighting|headlight|taillight'}]
+];
+const types=[
+ ['Motorsport & Performance Builds','track',{'Track / Road Course':'track','Drag Racing (Pro Street / Drag)':'power','Drift':'handling','Rally / Rallycross':'offroad','Formula / Scratch-Built':'track'}],
+ ['Street, Show & Aesthetic Builds','balanced',{'Daily Driver':'balanced','VIP':'balanced','Static':'handling','Bagged':'handling','Donks / High-Riser':'balanced'}],
+ ['Off-Road, Utility & Heritage Builds','offroad',{'Overland / Off-Road':'offroad','Hot Rod / Street Rod':'power','Rat Rod':'balanced','Pro Touring':'handling','Restomod':'balanced'}]
+];
+const chosenImprovements=new Set(), chosenTypes=new Set();
+const patterns=Object.assign({},...improvements.map(group=>group[2]));
+const typeGoals=Object.assign({},...types.map(group=>group[2]));
 function renderGoals(){
- const card=id=>{
-  const title=(id==='offroad'?'Off-Road Capabilities':GOALS[id].short).toUpperCase();
-  return '<button type="button" class="ds-goal-tile" data-goal="'+id+'" aria-pressed="'+String(id===goal())+'"><svg class="goal-icon" viewBox="-1 -1 26 26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+goalArt[id]+'</svg><strong>'+esc(title)+'</strong></button>';
- };
- document.querySelector('#improveCards').innerHTML=['power','reliability','handling','lightweight','safety'].map(card).join('');
- document.querySelector('#typeCards').innerHTML=['offroad','balanced','track'].map(card).join('');
+ for(const [target,groups,kind] of [['improveCards',improvements,'improvement'],['typeCards',types,'type']]){
+  document.getElementById(target).innerHTML=groups.map(([name,icon,items])=>
+   '<details class="goal-branch"><summary class="ds-goal-tile"><svg class="goal-icon" viewBox="-1 -1 26 26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">'+goalArt[icon]+'</svg><strong>'+esc(name.toUpperCase())+'</strong></summary><div class="branch-options">'+Object.keys(items).map(label=>'<button type="button" class="branch-choice" data-kind="'+kind+'" data-choice="'+esc(label)+'" aria-pressed="false">'+esc(label==='Overland / Off-Road'?'OFF-ROAD':label.toUpperCase())+'</button>').join('')+'</div></details>').join('');
+ }
+ syncChoices();
+}
+function syncChoices(){
+ const blend=document.getElementById('blendTypes').checked;
+ for(const button of document.querySelectorAll('[data-choice]')){
+  const isType=button.dataset.kind==='type',selected=(isType?chosenTypes:chosenImprovements).has(button.dataset.choice);
+  button.setAttribute('aria-pressed',String(selected));
+  button.disabled=isType&&blend&&!selected&&chosenTypes.size>=2;
+ }
+ document.getElementById('choiceSummary').textContent=[...chosenImprovements,...chosenTypes].map(x=>x==='Overland / Off-Road'?'Off-Road':x).join(' · ');
+}
+function changeChoices(){
+ document.getElementById('guidedGoal').value=typeGoals[[...chosenTypes][0]]||'balanced';
+ preview=null;syncChoices();renderPlan();
 }
 function renderPlan(){
  const root=document.querySelector('#guidedPlan');
@@ -34,7 +61,12 @@ function renderPlan(){
 }
 function generate(){
  const selected=vehicle();if(!selected)return;
- preview=core.draftPlan({parts:DATA.parts,vehicleId:selected.id,goal:goal(),budget:document.querySelector('#guidedBudget').value,laborRate:state.laborRate,existing:state.build,existingMeta:state.buildMeta});
+ preview=core.draftPlan({parts:DATA.parts,vehicleId:selected.id,goal:goal(),goals:[...chosenTypes].map(type=>typeGoals[type]),candidateFilter:chosenImprovements.size?part=>[...chosenImprovements].some(choice=>new RegExp(patterns[choice],'i').test([part.category,part.name,...(part.tags||[])].join(' '))):null,budget:document.querySelector('#guidedBudget').value,laborRate:state.laborRate,existing:state.build,existingMeta:state.buildMeta});
+ if(chosenTypes.size||chosenImprovements.size){
+  preview.selection=[...chosenTypes,...chosenImprovements].map(name=>name==='Overland / Off-Road'?'Off-Road':name);
+  const guidance=[...new Set([...chosenTypes].map(type=>GOALS[typeGoals[type]].work))];
+  preview.work=[preview.selection.join(' · '),...(guidance.length?guidance:[preview.work])].join(' — ');
+ }
  previewSignature=signature();renderPlan();
 }
 function apply(){
@@ -42,7 +74,7 @@ function apply(){
  if(signature()!==previewSignature){generate();status('Your vehicle or build changed. Review the updated plan before adding it.');return}
  rememberUndo();
  for(const p of preview.picks)if(!state.build.includes(p.id)){state.build.push(p.id);state.buildMeta[p.id]={status:'planned',note:'Dream Spec '+GOALS[preview.goal].short+' plan. Verify final installation and supporting requirements.'}}
- state.goal=preview.goal;state.buildName=vehicle().year+' '+vehicle().make+' '+vehicle().model+' '+GOALS[preview.goal].short+' build';
+ state.goal=preview.goal;state.buildName=vehicle().year+' '+vehicle().make+' '+vehicle().model+' '+(preview.selection?.join(' + ')||GOALS[preview.goal].short)+' build';
  const budget=document.querySelector('#guidedBudget').value,rate=state.laborRate;
  if(budget!=='')state.budget=Number(budget);if(rate!=='')state.laborRate=Number(rate);
  saveState();renderAll();route('build');
@@ -112,11 +144,20 @@ async function retrySave(){
  try{await DSAuth.request('rpc/finish_diagnostic_run',{method:'POST',body:JSON.stringify({p_run_id:diagnosis.run_id,p_result:diagnosis.result})});diagnosis.saved=true;showDiagnosis();await DSOwned.loadEvents()}
  catch(e){message('diagnosisStatus',e.message)}
 }
-window.DSGuided={preview(profile={}){const select=document.querySelector('#guidedGoal');select.value=GOALS[profile.primaryGoal]?profile.primaryGoal:'balanced';document.querySelector('#guidedBudget').value=profile.budget||'';renderGoals();route('goals');generate()}};
+window.DSGuided={preview(profile={}){chosenImprovements.clear();chosenTypes.clear();const select=document.querySelector('#guidedGoal');select.value=GOALS[profile.primaryGoal]?profile.primaryGoal:'balanced';document.querySelector('#guidedBudget').value=profile.budget||'';renderGoals();route('goals');generate()}};
 function init(){
  renderGoals();renderPlan();renderAccount();renderAI();
- document.querySelector('#goalCards').addEventListener('click',e=>{const b=e.target.closest('[data-goal]');if(!b)return;document.querySelector('#guidedGoal').value=b.dataset.goal;preview=null;renderGoals();renderPlan()});
- document.querySelector('#guidedGoal').addEventListener('change',()=>{preview=null;renderGoals();renderPlan()});
+ document.querySelector('#goalCards').addEventListener('click',event=>{
+  const button=event.target.closest('[data-choice]');if(!button)return;
+  const isType=button.dataset.kind==='type',set=isType?chosenTypes:chosenImprovements,label=button.dataset.choice;
+  if(set.has(label))set.delete(label);
+  else{if(isType&&!document.getElementById('blendTypes').checked)set.clear();set.add(label)}
+  changeChoices();
+ });
+ document.getElementById('blendTypes').onchange=event=>{
+  if(!event.target.checked&&chosenTypes.size>1)chosenTypes.delete([...chosenTypes][1]);
+  changeChoices();
+ };
  document.querySelector('#guidedPlanForm').addEventListener('submit',e=>{e.preventDefault();generate()});
  document.querySelector('#guidedPlan').addEventListener('click',e=>{if(e.target.closest('#applyGuidedPlan'))apply();const b=e.target.closest('[data-plan-detail]');if(b)showPart(b.dataset.planDetail)});
  document.querySelector('#accountForm').addEventListener('submit',accountSubmit);
