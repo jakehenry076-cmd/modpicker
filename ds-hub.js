@@ -6,12 +6,12 @@ function message(id,text){const node=document.querySelector('#'+id);if(node)node
 function status(text){if(typeof toast==='function')toast(text)}
 function signature(){return JSON.stringify({vehicle:state.vehicleId,build:state.build,meta:state.buildMeta})}
 function goal(){return document.querySelector('#guidedGoal').value}
-const turbine = '<circle cx="12" cy="13" r="7"/><path d="M12 6h9V2h-9a11 11 0 0 0-11 11m11-4v4l4 2m-4-2-3 3"/>';
-const passenger = '<circle cx="10" cy="5" r="3"/><path d="M6 20v-7q0-4 4-4t5 4l3 7H6zm1-1 7-9"/>';
+const turbine = '<path d="M13 4h8v4h-6a8 8 0 1 1-5-2V3h3z"/><circle cx="10" cy="14" r="5.5"/><circle cx="10" cy="14" r="1.1"/>'+[0,60,120,180,240,300].map(angle=>'<path transform="rotate('+angle+' 10 14)" d="M10 12.8q2-1 1-3"/>').join('');
+const passenger = '<circle cx="12" cy="4.5" r="2.7"/><path d="M6 21v-6q0-6 5-6h2q5 0 5 6v6zM5 20h14M7 18 17 8"/><path d="m9 17 2 2 2-2-2-2z" fill="currentColor"/>';
 const goalArt = {
  power: turbine,
  reliability: '<path d="m12 2 8 3v6q0 7-8 11-8-4-8-11V5z"/><path d="m8 12 3 3 5-6"/>',
- handling: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="m3 9 6 2m6 0 6-2m-9 6v7"/>',
+ handling: '<circle cx="12" cy="12" r="10"/><path d="M4 10q8-5 16 0l-6 4-1 6h-2l-1-6z"/><circle cx="12" cy="11" r="2"/>',
  offroad: '<path d="m1 20 8-13 4 6 3-9 7 16zm5-8 3 2 2-3"/>',
  lightweight: '<path d="M4 19C0 9 11 2 22 2c0 10-7 20-17 17M2 22 17 7m-7 7h5"/>',
  safety: passenger,
@@ -19,11 +19,12 @@ const goalArt = {
  track: '<path d="M5 20c-4 0-4-5-2-8l4-7q1-2 4-2h6q5 0 5 4t-5 4h-3l-4 7q-1 2-5 2z"/><path d="m6 16 5-9h6" stroke-dasharray="2 2"/>'
 };
 function renderGoals(){
- const cards=Object.entries(GOALS).map(([id,g])=>{
-  const title=g.short.replace(/\b[a-z]/g,letter=>letter.toUpperCase());
+ const card=id=>{
+  const title=(id==='offroad'?'Off-Road Capabilities':GOALS[id].short).toUpperCase();
   return '<button type="button" class="ds-goal-tile" data-goal="'+id+'" aria-pressed="'+String(id===goal())+'"><svg class="goal-icon" viewBox="-1 -1 26 26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+goalArt[id]+'</svg><strong>'+esc(title)+'</strong></button>';
- });
- document.querySelector('#goalCards').innerHTML=cards.join('');
+ };
+ document.querySelector('#improveCards').innerHTML=['power','reliability','handling','lightweight','safety'].map(card).join('');
+ document.querySelector('#typeCards').innerHTML=['offroad','balanced','track'].map(card).join('');
 }
 function renderPlan(){
  const root=document.querySelector('#guidedPlan');
@@ -33,7 +34,7 @@ function renderPlan(){
 }
 function generate(){
  const selected=vehicle();if(!selected)return;
- preview=core.draftPlan({parts:DATA.parts,vehicleId:selected.id,goal:goal(),budget:document.querySelector('#guidedBudget').value,laborRate:document.querySelector('#guidedLabor').value,existing:state.build,existingMeta:state.buildMeta});
+ preview=core.draftPlan({parts:DATA.parts,vehicleId:selected.id,goal:goal(),budget:document.querySelector('#guidedBudget').value,laborRate:state.laborRate,existing:state.build,existingMeta:state.buildMeta});
  previewSignature=signature();renderPlan();
 }
 function apply(){
@@ -42,7 +43,7 @@ function apply(){
  rememberUndo();
  for(const p of preview.picks)if(!state.build.includes(p.id)){state.build.push(p.id);state.buildMeta[p.id]={status:'planned',note:'Dream Spec '+GOALS[preview.goal].short+' plan. Verify final installation and supporting requirements.'}}
  state.goal=preview.goal;state.buildName=vehicle().year+' '+vehicle().make+' '+vehicle().model+' '+GOALS[preview.goal].short+' build';
- const budget=document.querySelector('#guidedBudget').value,rate=document.querySelector('#guidedLabor').value;
+ const budget=document.querySelector('#guidedBudget').value,rate=state.laborRate;
  if(budget!=='')state.budget=Number(budget);if(rate!=='')state.laborRate=Number(rate);
  saveState();renderAll();route('build');
 }
