@@ -81,7 +81,7 @@ const section=document.createElement('section');section.id='garageView';section.
         <p class="garage-note">Starter builds use deterministic catalog rules: source-listed fitment, current observed prices, one part per category and the Garage budget/goal. Existing build items are kept. Power targets are not treated as additive horsepower claims.</p>
         <details><summary>Developer context preview</summary><pre id="garageContextPreview" class="garage-context-preview"></pre></details>
       </section>
-      <section class="garage-card"><span class="eyebrow">Next garage stages</span><h3>Already in the roadmap</h3><ul class="garage-roadmap-list"><li>Generate a 3D model of your vehicle from photos you upload using an AI 3D modeling API.</li><li>sourced OEM intervals, fluids and capacities</li><li>receipt image/PDF + email imports</li><li>expanded cross-make interchange groups</li><li>prerequisite/conflict-aware build optimization</li><li>community/forum consensus</li><li>used listings and local shops</li></ul></section>
+      <section class="garage-card"><span class="eyebrow">Next garage stages</span><h3>Already in the roadmap</h3><ul class="garage-roadmap-list"><li>Browser extension to save product links from other websites to a selected vehicle build.</li><li>Generate a 3D model of your vehicle from photos you upload using an AI 3D modeling API.</li><li>sourced OEM intervals, fluids and capacities</li><li>receipt image/PDF + email imports</li><li>expanded cross-make interchange groups</li><li>prerequisite/conflict-aware build optimization</li><li>community/forum consensus</li><li>used listings and local shops</li></ul></section>
     </aside>
   </div></div>`;
 main.appendChild(section);
