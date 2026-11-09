@@ -7,13 +7,12 @@ function status(text){if(typeof toast==='function')toast(text)}
 function signature(){return JSON.stringify({vehicle:state.vehicleId,build:state.build,meta:state.buildMeta})}
 function goal(){return document.querySelector('#guidedGoal').value}
 // The compressor housing wraps around the wheel and exits through a flanged outlet.
-const turbine = '<path d="M10 3h11v5h-7a8 8 0 1 1-4-5Z" fill="currentColor" fill-opacity=".12"/><path d="M21 2v7"/><circle cx="10" cy="13" r="6"/>'+
- Array.from({length:7},(_,i)=>'<path transform="rotate('+i*360/7+' 10 13)" d="M10 12q2-2 .4-4-1.8 1-2 3.8Z" stroke-width=".45" fill="currentColor"/>').join('')+'<circle cx="10" cy="13" r="1.3" fill="currentColor"/>';
+const turbine = '<path d="M12 3h9v5h-6a8 8 0 1 1-3-5Z" fill="currentColor" fill-opacity=".1"/><path d="M21 2v7M12 2v3"/><circle cx="10" cy="14" r="5.5"/>'+Array.from({length:8},(_,index)=>'<path transform="rotate('+index*45+' 10 14)" d="M10 13q3-2 1.2-4.1-2.3 1-2.3 3.7" stroke-width=".8"/>').join('')+'<circle cx="10" cy="14" r="1.2" fill="currentColor"/><path d="M5 21v2h9v-2"/>';
 const passenger = '<circle cx="12" cy="4" r="2.5"/><path d="M8 21v-7l-1 4H4l2-7q.6-2.5 4-3h4q3.4.5 4 3l2 7h-3l-1-4v7H8Zm1-2 7-10"/>';
 const goalArt = {
  power: turbine,
  reliability: '<path d="m12 2 8 3v6q0 7-8 11-8-4-8-11V5z"/><path d="m8 12 3 3 5-6"/>',
- handling: '<path d="M3 13a9.2 9.2 0 1 1 18 0c-.4 2.8-2.1 5.2-4.5 7h-9C5.1 18.2 3.4 15.8 3 13Z" stroke-width="2.6"/><path d="M3 10.5 9 12l2 7h2l2-7 6-1.5M9 12q3-3 6 0"/><circle cx="12" cy="13" r="1.4"/><path d="M12 2v2.5" stroke-width="2.4"/>',
+ handling: '<g transform="translate(-1 4) scale(.7)"><path d="M3 13a9.2 9.2 0 1 1 18 0c-.4 2.8-2.1 5.2-4.5 7h-9C5.1 18.2 3.4 15.8 3 13Z" stroke-width="2.6"/><path d="M3 10.5 9 12l2 7h2l2-7 6-1.5M9 12q3-3 6 0"/><circle cx="12" cy="13" r="1.4"/><path d="M12 2v2.5" stroke-width="2.4"/></g><path d="M20 2v3m-3 0h6l-6 3 6 3-6 3 6 3h-6m3 0v5m-3 0h6" stroke-width="1.4"/>',
  offroad: '<path d="m1 20 8-13 4 6 3-9 7 16zm5-8 3 2 2-3"/>',
  lightweight: '<path d="M4 19C0 9 11 2 22 2c0 10-7 20-17 17M2 22 17 7m-7 7h5"/>',
  safety: passenger,
@@ -56,20 +55,37 @@ function changeChoices(){
  document.getElementById('guidedGoal').value=typeGoals[[...chosenTypes][0]]||'balanced';
  preview=null;syncChoices();renderPlan();
 }
+let budgetRevision=0;
+async function budgetInUSD(){
+ const amount=document.getElementById('guidedBudget').value;
+ const currency=document.getElementById('budgetCurrency').value;
+ const revision=budgetRevision;
+ if(currency==='USD')return {usd:amount===''?null:Number(amount),currency,rate:1};
+ const response=await fetch('https://api.frankfurter.dev/v1/latest?base=USD&symbols='+encodeURIComponent(currency),{signal:AbortSignal.timeout(10000)});
+ if(!response.ok)throw new Error('Currency rates are unavailable. Try again or select USD.');
+ const data=await response.json(),rate=data.rates?.[currency];
+ if(revision!==budgetRevision)throw new Error('Budget changed. Preview your plan again.');
+ if(!Number.isFinite(rate)||rate<=0)throw new Error('A valid currency rate is unavailable.');
+ return {usd:amount===''?null:Number(amount)/rate,currency,rate,date:data.date};
+}
 function renderPlan(){
  const root=document.querySelector('#guidedPlan');
  if(!preview){root.innerHTML='<div class="ds-empty"><strong>Choose a direction for your build.</strong><p>Select your vehicle, a goal and your budget to preview a plan.</p></div>';return}
- const p=preview,fmt=n=>money(n);
+ const p=preview,fmt=n=>new Intl.NumberFormat(undefined,{style:'currency',currency:p.currency||'USD'}).format(n*(p.fxRate||1));
  root.innerHTML='<div class="ds-plan-summary"><div><span>Known parts cost</span><strong>'+fmt(p.knownParts)+'</strong></div><div><span>Known install time</span><strong>'+p.knownHours.toFixed(1)+' hr'+(p.unknownHours?' + unknowns':'')+'</strong></div><div><span>Labor at your rate</span><strong>'+(p.laborRate?fmt(p.knownLabor)+(p.unknownHours?' + unknowns':''):'Rate not set')+'</strong></div></div><section class="ds-card"><span class="eyebrow">The work behind the build</span><p>'+esc(p.work)+'</p>'+p.messages.map(t=>'<p class="ds-notice">'+esc(t)+'</p>').join('')+'</section>'+p.picks.map(part=>'<article class="ds-plan-part"><div><span class="eyebrow">'+esc(part.category)+'</span><h3>'+esc(part.brand+' '+part.name)+'</h3><p>'+esc(part.install?.difficulty||'Install difficulty unknown')+' · '+(core.hours(part)==null?'Install time unknown':core.hours(part)+' hr planning estimate')+'</p><p>'+(part.requires?.length?'Recorded supporting requirements are included or already in your build.':'Follow the linked manufacturer instructions for this exact part.')+'</p></div><div><strong>'+(core.price(part)==null?'Price unknown':fmt(core.price(part)))+'</strong><button type="button" class="button secondary small" data-plan-detail="'+esc(part.id)+'">Details and sources</button></div></article>').join('')+(p.picks.length?'<button id="applyGuidedPlan" class="button primary" type="button">Add this plan to my build sheet ↗</button>':'');
 }
-function generate(){
+async function generate(){
+ let budget;
+ try{budget=await budgetInUSD()}catch(error){status(error.message);return}
  const selected=vehicle();if(!selected)return;
- preview=core.draftPlan({parts:DATA.parts,vehicleId:selected.id,goal:goal(),goals:[...chosenTypes].map(type=>typeGoals[type]),candidateFilter:chosenImprovements.size?part=>[...chosenImprovements].some(choice=>new RegExp(patterns[choice],'i').test([part.category,part.name,...(part.tags||[])].join(' '))):null,budget:document.querySelector('#guidedBudget').value,laborRate:state.laborRate,existing:state.build,existingMeta:state.buildMeta});
+ preview=core.draftPlan({parts:DATA.parts,vehicleId:selected.id,goal:goal(),goals:[...chosenTypes].map(type=>typeGoals[type]),candidateFilter:chosenImprovements.size?part=>[...chosenImprovements].some(choice=>new RegExp(patterns[choice],'i').test([part.category,part.name,...(part.tags||[])].join(' '))):null,budget:budget.usd,laborRate:state.laborRate,existing:state.build,existingMeta:state.buildMeta});
  if(chosenTypes.size||chosenImprovements.size){
   preview.selection=[...chosenTypes,...chosenImprovements].map(name=>name==='Overland / Off-Road'?'Off-Road':name);
   const guidance=[...new Set([...chosenTypes].map(type=>GOALS[typeGoals[type]].work))];
   preview.work=[preview.selection.join(' · '),...(guidance.length?guidance:[preview.work])].join(' — ');
  }
+ preview.currency=budget.currency;preview.fxRate=budget.rate;preview.budgetUSD=budget.usd;
+ if(budget.date)preview.messages.push('Currency conversion uses reference rates dated '+budget.date+'.');
  previewSignature=signature();renderPlan();
 }
 function apply(){
@@ -79,7 +95,7 @@ function apply(){
  for(const p of preview.picks)if(!state.build.includes(p.id)){state.build.push(p.id);state.buildMeta[p.id]={status:'planned',note:'Dream Spec '+GOALS[preview.goal].short+' plan. Verify final installation and supporting requirements.'}}
  state.goal=preview.goal;state.buildName=vehicle().year+' '+vehicle().make+' '+vehicle().model+' '+(preview.selection?.join(' + ')||GOALS[preview.goal].short)+' build';
  const budget=document.querySelector('#guidedBudget').value,rate=state.laborRate;
- if(budget!=='')state.budget=Number(budget);if(rate!=='')state.laborRate=Number(rate);
+ if(budget!=='')state.budget=preview.budgetUSD;if(rate!=='')state.laborRate=Number(rate);
  saveState();renderAll();route('build');
 }
 function renderAccount(){
@@ -147,7 +163,7 @@ async function retrySave(){
  try{await DSAuth.request('rpc/finish_diagnostic_run',{method:'POST',body:JSON.stringify({p_run_id:diagnosis.run_id,p_result:diagnosis.result})});diagnosis.saved=true;showDiagnosis();await DSOwned.loadEvents()}
  catch(e){message('diagnosisStatus',e.message)}
 }
-window.DSGuided={preview(profile={}){chosenImprovements.clear();chosenTypes.clear();const select=document.querySelector('#guidedGoal');select.value=GOALS[profile.primaryGoal]?profile.primaryGoal:'balanced';document.querySelector('#guidedBudget').value=profile.budget||'';renderGoals();route('goals');generate()}};
+window.DSGuided={preview(profile={}){chosenImprovements.clear();chosenTypes.clear();document.getElementById('budgetCurrency').value='USD';document.getElementById('budgetLabel').textContent='BUDGET (USD)';budgetRevision++;const select=document.querySelector('#guidedGoal');select.value=GOALS[profile.primaryGoal]?profile.primaryGoal:'balanced';document.querySelector('#guidedBudget').value=profile.budget||'';renderGoals();route('goals');generate()}};
 function init(){
  renderGoals();renderPlan();renderAccount();renderAI();
  document.querySelector('#goalCards').addEventListener('click',event=>{
@@ -161,6 +177,10 @@ function init(){
   if(!event.target.checked&&chosenTypes.size>1)chosenTypes.delete([...chosenTypes][1]);
   changeChoices();
  };
+ for(const id of ['guidedBudget','budgetCurrency'])document.getElementById(id).addEventListener('input',()=>{
+  budgetRevision++;preview=null;renderPlan();
+  document.getElementById('budgetLabel').textContent='BUDGET ('+document.getElementById('budgetCurrency').value+')';
+ });
  document.querySelector('#guidedPlanForm').addEventListener('submit',e=>{e.preventDefault();generate()});
  document.querySelector('#guidedPlan').addEventListener('click',e=>{if(e.target.closest('#applyGuidedPlan'))apply();const b=e.target.closest('[data-plan-detail]');if(b)showPart(b.dataset.planDetail)});
  document.querySelector('#accountForm').addEventListener('submit',accountSubmit);

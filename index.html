@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="enhancements.css" /><link rel="stylesheet" href="polish.css" />
   <link rel="stylesheet" href="home.css" />
-  <link rel="stylesheet" href="dreamspec-theme.css?v=goal-tree-2" />
+  <link rel="stylesheet" href="dreamspec-theme.css?v=budget-currency-1" />
 </head>
 <body data-view="home" class="ui-refresh">
   <a class="skip-link" href="#mainContent">Skip to content</a>
@@ -113,7 +113,10 @@
       </div>
       <p id="choiceSummary" aria-live="polite"></p><form id="guidedPlanForm" class="guided-budget-form">
         <input id="guidedGoal" type="hidden" value="power">
-        <label class="ds-goal-tile budget-tile"><svg class="goal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><circle cx="12" cy="12" r="3"/><path d="M5 12h2m10 0h2"/></svg><strong>BUDGET (USD)</strong><input id="guidedBudget" type="number" min="0" max="10000000" step="0.01" placeholder="Optional"></label>
+        <details class="budget-menu">
+          <summary class="ds-goal-tile budget-tile"><svg class="goal-icon" viewBox="0 0 32 26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m2 14 14-7 14 7-14 7zm0 4 14 7 14-7M2 10l14-7 14 7"/><path d="m7 13 9-4 9 4-9 4zM13 5l6 3m-6 11v4"/><ellipse cx="16" cy="13" rx="2" ry="1"/></svg><strong id="budgetLabel">BUDGET (USD)</strong><span aria-hidden="true">＋</span></summary>
+          <div class="budget-fields"><label>Currency<select id="budgetCurrency"><option value="USD">USD — US Dollar</option><option value="EUR">EUR — Euro</option><option value="GBP">GBP — British Pound</option><option value="CAD">CAD — Canadian Dollar</option><option value="AUD">AUD — Australian Dollar</option><option value="JPY">JPY — Japanese Yen</option></select></label><label>Total build budget<input id="guidedBudget" type="number" min="0" max="10000000" step="0.01" placeholder="Enter amount"></label></div>
+        </details>
         <button class="button primary" type="submit">Preview my plan ↗</button>
       </form>
       <div id="guidedPlan" aria-live="polite"></div>
@@ -182,7 +185,7 @@
   <script src="data-extra.js"></script>
   <script src="pipeline-data.js"></script>
   <script src="pipeline-bridge.js"></script>
-  <script src="ds-core.js?v=goal-tree-2"></script>
+  <script src="ds-core.js?v=budget-currency-1"></script>
   <script src="ds-auth.js"></script>
   <script src="ds-owned.js"></script>
   <script src="app-v2.js"></script>
@@ -190,6 +193,6 @@
   <script src="curated-discussions.js"></script>
   <script src="trust-ui.js"></script>
   <script src="supabase-bridge.js"></script>
-  <script src="ds-hub.js?v=goal-tree-2"></script>
+  <script src="ds-hub.js?v=budget-currency-1"></script>
 </body>
 </html>
