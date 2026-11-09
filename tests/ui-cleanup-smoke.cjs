@@ -35,7 +35,7 @@ const server=spawn('python',['-m','http.server','8125'],{cwd:path.join(__dirname
   assert.equal(await page.locator('.research-nav').getAttribute('open'),null);
   await page.locator('.brand').click();
   await page.locator('.home-path[data-home-go="catalog"]').click();
-  assert.ok(await page.locator('#applicationSearch').evaluate(el=>el===document.activeElement));
+  assert.ok(await page.locator('#vehicleMenu summary').evaluate(el=>el===document.activeElement));
   assert.match(await page.locator('#catalogView .hero h1').innerText(),/Find your next upgrade/);
   assert.equal(await page.locator('.hero-stats').isVisible(),false);
   assert.equal(await page.locator('.sidebar-card:visible').count(),0,'explanation cards should not clutter the default catalog view');

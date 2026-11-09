@@ -6,7 +6,7 @@ function simplifyHero(){const hero=document.querySelector('#catalogView .hero');
 function bindHome(){
  document.querySelectorAll('[data-home-go]').forEach(button=>button.addEventListener('click',()=>{
   window.route(button.dataset.homeGo);
-  if(button.dataset.homeGo==='catalog')document.querySelector('#applicationSearch')?.focus({preventScroll:true});
+  if(button.dataset.homeGo==='catalog')document.querySelector('#vehicleMenu summary')?.focus({preventScroll:true});
  }));
  const nav=document.querySelector('.main-nav');
  const menu=document.querySelector('#mobileMenuButton');

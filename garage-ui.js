@@ -8,15 +8,15 @@ const main=document.querySelector('main');
 if(!main)return;
 const section=document.createElement('section');section.id='garageView';section.className='view shell garage-view';section.innerHTML=`
   <div class="page-head garage-page-head">
-    <div><span class="eyebrow">Virtual garage</span><h1>My Garage</h1><p>Record the actual condition, modifications, preferences, maintenance and history that should shape future recommendations.</p></div>
-    <div class="garage-page-actions"><button id="copyMaintenanceReport" class="button secondary" type="button">Copy maintenance report</button><button id="exportGarageData" class="button secondary" type="button">Export garage JSON</button></div>
+    <h1>My Garage</h1>
+    <details class="garage-tools"><summary>Garage menu</summary><div class="garage-page-actions"><button id="copyMaintenanceReport" class="button secondary" type="button">Copy maintenance report</button><button id="exportGarageData" class="button secondary" type="button">Export garage JSON</button></div>    <div class="ds-actions"><button id="importLegacyGarage" class="button secondary small" type="button">Import my previous browser garage</button><button id="reloadOwnedGarage" class="button secondary small" type="button">Reload saved vehicles</button></div></details>
   </div>
   <section class="ds-card ds-owned-controls">
     <div class="ds-actions"><button id="vehicleTab" class="button secondary" aria-pressed="true">Vehicles</button><button id="engineTab" class="button secondary" aria-pressed="false">Engine Room</button></div>
     <div id="ownedVehicleCards" class="ds-vehicle-grid" aria-label="Saved vehicles"></div>
     <label hidden>My saved vehicles<select id="ownedVehicleSelect"></select></label>
-    <div id="addPanel" class="ds-add-vehicle" hidden><div><strong id="addTitle">Add vehicle</strong><p class="ds-muted">Choose a vehicle using the selectors above, then give it a nickname.</p></div><label>Nickname<input id="newVehicleNickname" maxlength="100" placeholder="Weekend project"></label><button id="addOwnedVehicle" class="button primary" type="button">Add selected vehicle to Garage</button></div>
-    <div class="ds-actions"><button id="importLegacyGarage" class="button secondary small" type="button">Import my previous browser garage</button><button id="reloadOwnedGarage" class="button secondary small" type="button">Reload saved vehicles</button></div>
+    <div id="addPanel" class="ds-add-vehicle" hidden><div><strong id="addTitle">Add vehicle</strong><p class="ds-muted">Choose an application for this build.</p></div><div id="garagePickerSlot"></div><label>Nickname<input id="newVehicleNickname" maxlength="100" placeholder="Weekend project"></label><button id="addOwnedVehicle" class="button primary" type="button">Add selected vehicle to Garage</button></div>
+
     <p id="garageSyncStatus" role="status"></p>
   </section>
   <section id="engineDetails" class="ds-card" hidden><h2>Engine build</h2><label>Engine designation<input id="engineDesignation" maxlength="100" placeholder="e.g. M52TU B28"></label><label>Build nickname<input id="engineBuildName" maxlength="100"></label><label>Build specifications<textarea id="engineSpecs" rows="5" placeholder="Components, modifications and measurements"></textarea></label></section><div id="garageEditor" hidden>
@@ -85,6 +85,34 @@ const section=document.createElement('section');section.id='garageView';section.
     </aside>
   </div></div>`;
 main.appendChild(section);
+for(const card of section.querySelectorAll('#garageEditor .garage-card')){
+ const heading=card.querySelector('h2,h3');
+ if(!heading)continue;
+ const menu=document.createElement('details');
+ const label=document.createElement('summary');
+ label.textContent=heading.textContent;
+ menu.className='garage-section-menu';
+ menu.append(label);
+ card.before(menu);
+ menu.append(card);
+}
+const vehicleMenu=document.getElementById('vehicleMenu');
+const menuHome=document.createComment('Vehicle settings');
+vehicleMenu.before(menuHome);
+function restorePicker(){
+ menuHome.after(vehicleMenu);
+ vehicleMenu.open=false;
+}
+document.addEventListener('ds:route',restorePicker);
+section.addEventListener('click',event=>{
+ if(event.target.closest('[data-add-item]')){
+  section.querySelector('#garagePickerSlot').append(vehicleMenu);
+  vehicleMenu.open=true;
+ }else if(event.target.closest('#vehicleTab,#engineTab,[data-owned-id]')){
+  section.querySelector('#addPanel').hidden=true;
+  restorePicker();
+ }
+});
 if(typeof state!=='undefined'&&state.route==='garage')section.classList.add('active-view');
 const script=document.createElement('script');script.src='garage.js';script.async=false;document.body.appendChild(script);
 script.addEventListener('load',()=>document.dispatchEvent(new CustomEvent('ds:garage-ready')));
