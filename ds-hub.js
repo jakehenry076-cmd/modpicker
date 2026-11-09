@@ -47,7 +47,7 @@ function syncChoices(){
  for(const button of document.querySelectorAll('[data-choice]')){
   const isType=button.dataset.kind==='type',selected=(isType?chosenTypes:chosenImprovements).has(button.dataset.choice);
   button.setAttribute('aria-pressed',String(selected));
-  button.disabled=isType&&blend&&!selected&&chosenTypes.size>=2;
+  button.disabled=isType&&blend&&!selected&&chosenTypes.size>=4;
  }
  document.getElementById('choiceSummary').textContent=[...chosenImprovements,...chosenTypes].map(x=>x==='Overland / Off-Road'?'Off-Road':x).join(' · ');
 }
@@ -70,7 +70,7 @@ async function budgetInUSD(){
 }
 function renderPlan(){
  const root=document.querySelector('#guidedPlan');
- if(!preview){root.innerHTML='<div class="ds-empty"><strong>Choose a direction for your build.</strong><p>Select your vehicle, a goal and your budget to preview a plan.</p></div>';return}
+ if(!preview){root.innerHTML='';return}
  const p=preview,fmt=n=>new Intl.NumberFormat(undefined,{style:'currency',currency:p.currency||'USD'}).format(n*(p.fxRate||1));
  root.innerHTML='<div class="ds-plan-summary"><div><span>Known parts cost</span><strong>'+fmt(p.knownParts)+'</strong></div><div><span>Known install time</span><strong>'+p.knownHours.toFixed(1)+' hr'+(p.unknownHours?' + unknowns':'')+'</strong></div><div><span>Labor at your rate</span><strong>'+(p.laborRate?fmt(p.knownLabor)+(p.unknownHours?' + unknowns':''):'Rate not set')+'</strong></div></div><section class="ds-card"><span class="eyebrow">The work behind the build</span><p>'+esc(p.work)+'</p>'+p.messages.map(t=>'<p class="ds-notice">'+esc(t)+'</p>').join('')+'</section>'+p.picks.map(part=>'<article class="ds-plan-part"><div><span class="eyebrow">'+esc(part.category)+'</span><h3>'+esc(part.brand+' '+part.name)+'</h3><p>'+esc(part.install?.difficulty||'Install difficulty unknown')+' · '+(core.hours(part)==null?'Install time unknown':core.hours(part)+' hr planning estimate')+'</p><p>'+(part.requires?.length?'Recorded supporting requirements are included or already in your build.':'Follow the linked manufacturer instructions for this exact part.')+'</p></div><div><strong>'+(core.price(part)==null?'Price unknown':fmt(core.price(part)))+'</strong><button type="button" class="button secondary small" data-plan-detail="'+esc(part.id)+'">Details and sources</button></div></article>').join('')+(p.picks.length?'<button id="applyGuidedPlan" class="button primary" type="button">Add this plan to my build sheet ↗</button>':'');
 }
@@ -174,7 +174,7 @@ function init(){
   changeChoices();
  });
  document.getElementById('blendTypes').onchange=event=>{
-  if(!event.target.checked&&chosenTypes.size>1)chosenTypes.delete([...chosenTypes][1]);
+  if(!event.target.checked)for(const type of [...chosenTypes].slice(1))chosenTypes.delete(type);
   changeChoices();
  };
  for(const id of ['guidedBudget','budgetCurrency'])document.getElementById(id).addEventListener('input',()=>{
