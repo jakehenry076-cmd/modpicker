@@ -12,13 +12,16 @@ const section=document.createElement('section');section.id='garageView';section.
     <div class="garage-page-actions"><button id="copyMaintenanceReport" class="button secondary" type="button">Copy maintenance report</button><button id="exportGarageData" class="button secondary" type="button">Export garage JSON</button></div>
   </div>
   <section class="ds-card ds-owned-controls">
-    <div class="ds-form-grid"><label>My saved vehicles<select id="ownedVehicleSelect"></select></label><label>New vehicle nickname<input id="newVehicleNickname" maxlength="100" placeholder="Weekend project"></label><button id="addOwnedVehicle" class="button primary" type="button">Add vehicle selected above</button></div>
+    <h2>Your vehicles</h2>
+    <div id="ownedVehicleCards" class="ds-vehicle-grid" aria-label="Saved vehicles"></div>
+    <label hidden>My saved vehicles<select id="ownedVehicleSelect"></select></label>
+    <div class="ds-add-vehicle"><div><strong>Add another vehicle</strong><p class="ds-muted">Choose a car using the selectors above, then give it a nickname.</p></div><label>Vehicle nickname<input id="newVehicleNickname" maxlength="100" placeholder="Weekend project"></label><button id="addOwnedVehicle" class="button primary" type="button">Add selected car to Garage</button></div>
     <div class="ds-actions"><button id="importLegacyGarage" class="button secondary small" type="button">Import my previous browser garage</button><button id="reloadOwnedGarage" class="button secondary small" type="button">Reload saved vehicles</button></div>
     <p id="garageSelectionHint"></p><p id="garageSyncStatus" role="status"></p>
   </section>
   <div id="garageEditor" hidden>
   <div class="garage-hero-card">
-    <div class="garage-hero-main"><div class="garage-vehicle-icon">MY CAR</div><div class="garage-hero-copy"><span class="eyebrow">Current vehicle</span><h2 id="garageVehicleTitle">Selected vehicle</h2><p id="garageVehicleMeta"></p></div></div>
+    <div class="garage-hero-main"><div class="garage-hero-copy"><span class="eyebrow">Current vehicle</span><h2 id="garageVehicleTitle">Selected vehicle</h2><p id="garageVehicleMeta"></p><label class="ds-vehicle-nickname"><span>Vehicle nickname</span><input id="garageNickname" data-profile-field="nickname" maxlength="100" placeholder="e.g. Weekend Z3"><small>Names this vehicle in your Garage. Changes save automatically.</small></label></div></div>
     <div class="garage-profile-meter"><span class="eyebrow">Recommendation context</span><strong id="garageProfileCompleteness">0% context complete</strong><p>More context lets recommendations avoid parts that conflict with your real car, preferences or maintenance needs.</p></div>
   </div>
   <div class="garage-grid">
@@ -26,11 +29,10 @@ const section=document.createElement('section');section.id='garageView';section.
       <section class="garage-card">
         <div class="garage-card-head"><div><span class="eyebrow">Vehicle profile</span><h2>What is this car actually like?</h2><p>This information stays separate for each selected vehicle.</p></div></div>
         <div class="garage-form-grid">
-          <label><span>Nickname</span><input id="garageNickname" data-profile-field="nickname" placeholder="Weekend Z3"></label>
           <label><span>Current odometer (miles)</span><input id="garageOdometer" data-profile-field="odometer" type="number" min="0" placeholder="98500"></label>
           <label><span>Condition</span><select id="garageCondition" data-profile-field="condition"><option>Project</option><option>Driver</option><option>Good</option><option>Excellent</option><option>Track / competition</option></select></label>
           <label><span>Build budget ($)</span><input id="garageBudget" data-profile-field="budget" type="number" min="0" placeholder="3000"></label>
-          <label><span>Primary goal</span><select id="garagePrimaryGoal" data-profile-field="primaryGoal"><option value="balanced">Balanced street</option><option value="reliability">Reliability / restore</option><option value="power">Power</option><option value="handling">Handling</option><option value="track">Track</option><option value="budget">Budget</option><option value="offroad">Off-road</option><option value="lightweight">Weight reduction</option><option value="safety">Safety</option></select></label>
+          <label><span>Primary goal</span><select id="garagePrimaryGoal" data-profile-field="primaryGoal"><option value="balanced">Balanced street</option><option value="reliability">Reliability / restore</option><option value="power">Power</option><option value="handling">Handling</option><option value="track">Track</option><option value="offroad">Off-road</option><option value="lightweight">Weight reduction</option><option value="safety">Safety</option></select></label>
           <label><span>Target power increase (hp)</span><input id="garageTargetPower" data-profile-field="targetPower" type="number" min="0" placeholder="100"></label>
           <label class="full"><span>Current modifications</span><textarea id="garageCurrentMods" data-profile-field="currentMods" rows="3" placeholder="Suspension, wheels, intake, tune, brakes, engine swap, coding…"></textarea></label>
           <label class="full"><span>History</span><textarea id="garageHistory" data-profile-field="history" rows="3" placeholder="Ownership history, previous repairs, accidents, known work…"></textarea></label>

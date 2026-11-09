@@ -89,11 +89,14 @@ const server=spawn('python',['-m','http.server','8126'],{cwd:require('node:path'
  await page.locator('#addOwnedVehicle').click();
  await page.waitForFunction(()=>window.DSOwned?.vehicles.length===2&&window.DSOwned.active?.nickname==='My second Z3');
  const second=await page.evaluate(()=>DSOwned.active.id);
+ for(const id of ['garagePrimaryGoal','guidedGoal','goalSelect'])assert.equal(await page.locator('#'+id+' option[value="budget"]').count(),0);
+ assert.equal(await page.locator('#garageBudget').getAttribute('type'),'number');
  await page.locator('#garageNickname').fill('Separate vehicle profile');
  await page.locator('#garageNickname').dispatchEvent('input');await page.evaluate(()=>DSOwned.flush());
- await page.locator('#ownedVehicleSelect').selectOption(mock.first);
+ assert.equal(await page.locator('.ds-vehicle-card').count(),2);
+ await page.locator('[data-owned-id="'+mock.first+'"]').click();
  await page.waitForFunction(()=>document.querySelector('#garageNickname').value==='My first Z3');
- await page.locator('#ownedVehicleSelect').selectOption(second);
+ await page.locator('[data-owned-id="'+second+'"]').click();
  await page.waitForFunction(()=>document.querySelector('#garageNickname').value==='Separate vehicle profile');
  assert.equal(await page.evaluate(()=>localStorage.getItem('modpicker-owner-garage-v1')),null,'cloud profiles must not leak into legacy storage');
  const imageData=await page.evaluate(()=>{const canvas=document.createElement('canvas');canvas.width=32;canvas.height=32;const context=canvas.getContext('2d');context.fillStyle='#164fb0';context.fillRect(0,0,32,32);return canvas.toDataURL('image/png').split(',')[1]});

@@ -53,14 +53,14 @@ async function removePhoto(index){
 async function flush(){
  clearTimeout(timer);timer=null;if(saving){await saving;if(dirty)return flush();return}
  if(!dirty||!owner||!active())return;
- const row=active(),expected=epoch,payload={profile:cleanProfile(row.profile),build:structuredClone(row.build||{}),nickname:String(row.profile.nickname||row.nickname||'').slice(0,100)};
+ const row=active(),expected=epoch,payload={profile:cleanProfile(row.profile),build:structuredClone(row.build||{}),nickname:String(row.profile.nickname??row.nickname??'').slice(0,100)};
  dirty=false;
  saving=(async()=>{
   try{
    const values=await DSAuth.request('owned_vehicles?id=eq.'+row.id+'&version=eq.'+row.version,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify(payload)});
    if(expected!==epoch)return;
    if(!values?.length)throw new Error('This vehicle was updated in another session. Reload the garage before continuing.');
-   row.version=values[0].version;row.nickname=payload.nickname;setStatus(dirty?'Saving changes…':'All changes saved');
+   row.version=values[0].version;row.nickname=payload.nickname;renderVehicleCards();setStatus(dirty?'Saving changes…':'All changes saved');
   }catch(e){if(expected===epoch)dirty=true;throw e}
  })().finally(()=>{saving=null});
  await saving;if(dirty)return flush();
@@ -86,7 +86,13 @@ function renderHistory(){
  const root=document.querySelector('#diagnosisHistory');if(!root)return;
  root.innerHTML=events.length?events.map(e=>'<article class="ds-event"><div class="ds-event-top"><strong>'+esc(e.title)+'</strong><span class="tag">'+(e.status==='resolved'?'Resolved':'Diagnostic · unconfirmed')+'</span></div><p>'+esc(e.payload?.symptoms||'')+'</p><small>'+esc(new Date(e.created_at).toLocaleString())+'</small><details><summary>Diagnostic notes and sources</summary><pre class="ds-event-payload">'+esc(JSON.stringify(e.payload?.result||e.payload,null,2))+'</pre></details>'+(e.status!=='resolved'?'<label>Repair / verification notes<input data-event-note="'+esc(e.id)+'" maxlength="2000" placeholder="What did you verify or repair?"></label><button class="button secondary small" data-resolve-event="'+esc(e.id)+'">Record resolution</button>':'<p>'+esc(e.resolution||'')+'</p>')+'</article>').join(''):'<p class="ds-muted">Diagnoser sessions will appear here automatically.</p>';
 }
+function renderVehicleCards(){
+ const root=document.querySelector('#ownedVehicleCards');if(!root)return;
+ const icon='<svg viewBox="0 0 160 80" fill="none" aria-hidden="true"><path d="M18 51l7-18 25-4 17-16h35l23 23 17 5v19H18z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M51 32l18-15h30l16 19H48M80 18v17M24 45h13m91 2h10" stroke="currentColor" stroke-width="3"/><circle cx="45" cy="59" r="11" fill="var(--panel)" stroke="currentColor" stroke-width="4"/><circle cx="119" cy="59" r="11" fill="var(--panel)" stroke="currentColor" stroke-width="4"/></svg>';
+ root.innerHTML=rows.length?rows.map(r=>'<button type="button" class="ds-vehicle-card" data-owned-id="'+esc(r.id)+'" aria-pressed="'+String(r.id===activeId)+'"><span class="ds-vehicle-art">'+icon+'</span><span class="ds-vehicle-card-title">'+esc((r.profile.nickname??r.nickname??'').trim()||'My vehicle')+'</span><span class="ds-vehicle-model">'+esc(r.year+' '+r.make+' '+r.model)+'</span><span class="ds-vehicle-engine">'+esc(r.engine||'Engine unspecified')+'</span><span class="ds-vehicle-state">'+(r.id===activeId?'Selected vehicle':'Open vehicle')+'</span></button>').join(''):'<div class="ds-empty">Your Garage is ready for its first car. Choose a vehicle above to get started.</div>';
+}
 function render(){
+ renderVehicleCards();
  const selector=document.querySelector('#ownedVehicleSelect'),editor=document.querySelector('#garageEditor');
  if(selector){selector.innerHTML=rows.length?rows.map(r=>'<option value="'+esc(r.id)+'">'+esc((r.profile.nickname||r.nickname||'My vehicle')+' · '+r.year+' '+r.make+' '+r.model+' · '+(r.engine||'engine unspecified'))+'</option>').join(''):'<option value="">No vehicles saved yet</option>';selector.value=activeId||''}
  const editable=!!owner&&!!active()&&active().catalog_vehicle_id===state.vehicleId;
@@ -129,6 +135,7 @@ async function load(){
  catch(e){if(epoch===expected){notify(e.message);render()}}
 }
 function bind(){
+ document.querySelector('#ownedVehicleCards')?.addEventListener('click',event=>{const card=event.target.closest('[data-owned-id]');if(card)select(card.dataset.ownedId).catch(e=>notify(e.message))});
  document.querySelector('#ownedVehicleSelect')?.addEventListener('change',e=>select(e.target.value).catch(e=>notify(e.message)));
  document.querySelector('#addOwnedVehicle')?.addEventListener('click',()=>create({nickname:document.querySelector('#newVehicleNickname').value,profile:empty(),build:{}}).catch(e=>notify(e.message)));
  document.querySelector('#importLegacyGarage')?.addEventListener('click',()=>importLegacy().catch(e=>notify(e.message)));

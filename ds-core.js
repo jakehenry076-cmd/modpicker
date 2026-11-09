@@ -9,8 +9,7 @@ const GOALS={
  lightweight:{label:'Make it lighter',short:'Weight reduction',categories:['Wheels','Body','Exhaust','Interior','Battery'],strict:true,work:'Use documented component weights. Preserve required safety equipment and verify mounting, electrical and structural requirements.'},
  safety:{label:'Make it safer',short:'Safety',categories:['Brakes','Tires','Lighting','Safety','Maintenance'],work:'Inspect braking, tire condition and safety systems first. Use sourced procedures and qualified help for safety-critical work.'},
  balanced:{label:'Balanced street build',short:'Balanced',categories:['Brakes','Suspension','Cooling','Intake','Exhaust','Drivetrain'],work:'Balance maintenance, comfort and the intended use of the vehicle.'},
- track:{label:'Get it ready for the track',short:'Track',categories:['Brakes','Tires','Suspension','Cooling','Chassis'],work:'Check the event requirements and plan inspection, brake fluid, cooling and tire preparation.'},
- budget:{label:'Build on a budget',short:'Budget',categories:['Maintenance','Brakes','Suspension','Intake','Exhaust'],work:'Resolve maintenance needs first and compare current, identified product offers.'}
+ track:{label:'Get it ready for the track',short:'Track',categories:['Brakes','Tires','Suspension','Cooling','Chassis'],work:'Check the event requirements and plan inspection, brake fluid, cooling and tire preparation.'}
 };
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function safeUrl(value){try{const u=new URL(String(value));return u.protocol==='https:'?u.href:''}catch{return ''}}
