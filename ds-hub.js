@@ -20,7 +20,7 @@ const goalArt = {
 };
 function renderGoals(){
  const cards=Object.entries(GOALS).map(([id,g])=>{
-  const title=g.label.replace(/\b[a-z]/g,letter=>letter.toUpperCase());
+  const title=g.short.replace(/\b[a-z]/g,letter=>letter.toUpperCase());
   return '<button type="button" class="ds-goal-tile" data-goal="'+id+'" aria-pressed="'+String(id===goal())+'"><svg class="goal-icon" viewBox="-1 -1 26 26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+goalArt[id]+'</svg><strong>'+esc(title)+'</strong></button>';
  });
  document.querySelector('#goalCards').innerHTML=cards.join('');
