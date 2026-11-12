@@ -165,7 +165,7 @@
     },
     "part_id": "auto-1a095b2e615f87e52cd0",
     "price": 249.0,
-    "retrieved_at": "2026-11-11T19:38:06Z",
+    "retrieved_at": "2026-11-12T19:56:22Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/fm-v-maxx-xxtreme-shock-front",
     "vendor": "Flyin' Miata"
@@ -317,7 +317,7 @@
     },
     "part_id": "auto-27dd7bcd83e0b681c200",
     "price": 169.0,
-    "retrieved_at": "2026-11-11T19:38:06Z",
+    "retrieved_at": "2026-11-12T19:56:22Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/rear-fm-sway-bar-na-nb",
     "vendor": "Flyin' Miata"
@@ -488,7 +488,7 @@
     },
     "part_id": "auto-5567411de8b9e6a77930",
     "price": 27.99,
-    "retrieved_at": "2026-11-11T06:27:02Z",
+    "retrieved_at": "2026-11-12T19:56:24Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/eccentric-lock-kit",
     "vendor": "Flyin' Miata"
@@ -621,7 +621,7 @@
     },
     "part_id": "auto-679c96dcac7588bd48c9",
     "price": 27.99,
-    "retrieved_at": "2026-11-11T19:38:07Z",
+    "retrieved_at": "2026-11-12T19:56:23Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/nb-shock-bushing-set",
     "vendor": "Flyin' Miata"
@@ -678,7 +678,7 @@
     },
     "part_id": "auto-6ac79d0c08c369675830",
     "price": 219.0,
-    "retrieved_at": "2026-11-11T19:38:06Z",
+    "retrieved_at": "2026-11-12T19:56:21Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/front-fm-sway-bar-nb",
     "vendor": "Flyin' Miata"
@@ -725,7 +725,7 @@
     "condition": "new",
     "currency": "USD",
     "id": "c7f5ede33065113043d0",
-    "in_stock": false,
+    "in_stock": true,
     "metadata": {
       "identity_matched": true,
       "name": "Alignment Bolt, 1990-05",
@@ -735,7 +735,7 @@
     },
     "part_id": "auto-6e634b276e57e1e2aa0c",
     "price": 14.99,
-    "retrieved_at": "2026-11-11T19:38:07Z",
+    "retrieved_at": "2026-11-12T19:56:23Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/alignment-bolt-1990-05",
     "vendor": "Flyin' Miata"
@@ -1742,7 +1742,7 @@
     },
     "part_id": "auto-dc7000be5609edcfd1ea",
     "price": 119.0,
-    "retrieved_at": "2026-11-11T06:27:01Z",
+    "retrieved_at": "2026-11-12T19:56:23Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/na-nb-lower-ball-joint",
     "vendor": "Flyin' Miata"
@@ -1799,7 +1799,7 @@
     },
     "part_id": "auto-e3481b8ae575d09d02a2",
     "price": 129.0,
-    "retrieved_at": "2026-11-11T19:38:07Z",
+    "retrieved_at": "2026-11-12T19:56:23Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/extended-lower-ball-joint",
     "vendor": "Flyin' Miata"
@@ -1970,7 +1970,7 @@
     },
     "part_id": "auto-fb1a11217b37d217ea8c",
     "price": 249.0,
-    "retrieved_at": "2026-11-11T19:38:06Z",
+    "retrieved_at": "2026-11-12T19:56:22Z",
     "shipping": null,
     "url": "https://flyinmiata.com/products/replacement-v-maxx-xxtreme-shock-right-rear",
     "vendor": "Flyin' Miata"
