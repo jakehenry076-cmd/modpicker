@@ -62938,5 +62938,15 @@
     "price": 1129.0,
     "shipping": null,
     "vendor": "Flyin' Miata"
+  },
+  {
+    "captured_at": "2026-11-21T19:17:45Z",
+    "id": "e8fc1b709d095794bc35:2026-11-21",
+    "in_stock": true,
+    "offer_id": "e8fc1b709d095794bc35",
+    "part_id": "auto-57e95e5fc4ad4d7b7cc2",
+    "price": 48.99,
+    "shipping": null,
+    "vendor": "Flyin' Miata"
   }
 ]
