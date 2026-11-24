@@ -13,7 +13,7 @@
     "catalog_discovery": {
       "candidate_count": 173,
       "enabled": true,
-      "filtered_count": 149,
+      "filtered_count": 154,
       "pages_checked": 21,
       "robots_origins_checked": 4,
       "scoped_candidate_count": 120,
@@ -68,18 +68,18 @@
       "pruned_invalid_nhtsa": 0,
       "rejected_make_mismatch": 0,
       "requests": 12,
-      "rows_seen": 49,
+      "rows_seen": 89,
       "vehicle_count": 609,
       "warnings": []
     },
     "web_product": {
       "enabled": true,
-      "fresh_pages_skipped": 140,
-      "offer_count": 3,
-      "pages_checked": 3,
+      "fresh_pages_skipped": 143,
+      "offer_count": 0,
+      "pages_checked": 0,
       "refresh_hours": 24,
       "robots_origins_checked": 2,
-      "source_count": 3,
+      "source_count": 0,
       "warnings": [
         "robots denied/unavailable: https://www.turnermotorsport.com/p-2765-coolant-expansion-tank-e53-x5-z3/",
         "robots denied/unavailable: https://www.turnermotorsport.com/p-339093-complete-cooling-system-overhaul-package-1999-2002-z3-23-25i-28-30/",
@@ -96,7 +96,7 @@
       ]
     },
     "youtube": {
-      "count": 107,
+      "count": 71,
       "enabled": true,
       "fresh_parts_skipped": 171,
       "max_searches": 25,
@@ -121,7 +121,7 @@
   "expanded_fitment_count": 2619,
   "fitment_rule_count": 102,
   "fitment_warnings": [],
-  "generated_at": "2026-11-24T09:56:56Z",
+  "generated_at": "2026-11-24T22:29:29Z",
   "matched_fitment_rule_count": 102,
   "mode": "deterministic_no_ai",
   "offer_count": 165,
@@ -129,6 +129,6 @@
   "platform_count": 7,
   "price_history_count": 6534,
   "review_queue_count": 66,
-  "source_count": 1408,
+  "source_count": 1424,
   "vehicle_count": 609
 }
